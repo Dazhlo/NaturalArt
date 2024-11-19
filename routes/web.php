@@ -14,7 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('/cliente/layout');
 });
 
-route::view('/plantilla', '/plantilla/plantilla');
+
+//ruta provisional de completar perfiol 
+
+Route::view('/Cliente/completar/perfil','/cliente/completarPerfil');
+Route::view('/Catalogo','/cliente/catalogo');
+Route::view('/Carrito','/cliente/carrito');
