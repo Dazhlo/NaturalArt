@@ -23,3 +23,20 @@ Route::get('/', function () {
 Route::view('/Cliente/completar/perfil','/cliente/completarPerfil');
 Route::view('/Catalogo','/cliente/catalogo');
 Route::view('/Carrito','/cliente/carrito');
+Route::view('/Menu/Detalles','/cliente/detallesMenu');
+Route::view('/Perfil','/cliente/miPerfil');
+
+
+//login y registro 
+Route::view('/login','/login/login');
+Route::view('/registrar','/login/registrar');
+
+
+//Administracion
+
+Route::view('/AdminInicio','/admin/inicio');
+Route::view('/AdminInicio1','/admin/home');
+
+
+
+

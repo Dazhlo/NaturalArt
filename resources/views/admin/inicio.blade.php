@@ -5,39 +5,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Natural Art México - @yield('title')</title>
+    <title>Admin- @yield('title')</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    {{-- <script src="{{ mix('js/plantillaadmin.js') }}"></script> --}}
+    <script src="/js/plantillaadmin.js"></script>
+
+
 
 
 </head>
 
-<body>
-    <nav class="border-solid border-gray-200 w-full border-b py-3 bg-white z-50 bg-inherit">
-        <div class="bg-gray-100 p-4">
-            <div class="container mx-auto"> <!-- Navegación superior -->
-                <div class="flex justify-between items-center">
-                    <div class="text-center">
-                        <h1 class="text-2xl font-bold">Natural Art</h1> <!-- Imagen -->
-                    </div>
-                    <div class="flex items-center space-x-4"> <a href="#" class="text-gray-600">Mis Compras</a> <a
-                            href="/menu" class="text-gray-600">Iniciar sesión</a> <a href="#"
-                            class="text-gray-600"><i class="fas fa-lock"></i></a> </div>
-                </div> <!-- Barra de búsqueda -->
-                <div class="mt-4"> <input type="text" placeholder="Buscar por producto, marca y más..."
-                        class="w-full p-2 border border-gray-300 rounded"> </div> <!-- Navegación principal -->
-                <div class="mt-4 flex justify-between items-center"> <a href="#" class="text-gray-600">Todo 
-                    </a> <a href="#" class="text-gray-600">Muebles</a> <a href="#"
-                        class="text-gray-600">Escritorios</a> <a href="#" class="text-gray-600">Colecciones</a> <a
-                        href="#" class="text-gray-600">Roperos</a> <a href="#"
-                        class="text-gray-600">Decoración</a> <a href="#" class="text-gray-600">Decoración de
-                        interior</a> </div> <!-- Subcategorías -->
-                <div class="mt-4 bg-white p-4 shadow">
+<body >
+    
 
-                </nav>
+<nav class="bg-white border-gray-200 dark:bg-gray-900">
+    <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
+        <a href="https://flowbite.com" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img src="{{ asset('images/login/logoorg.png') }}" class="h-10" alt="Flowbite Logo" />
+            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Natural Art</span>
+        </a>
+        <div class="flex items-center space-x-6 rtl:space-x-reverse">
+   
+            <a href="#" class="text-sm  text-blue-600 dark:text-blue-500 hover:underline">Cerrar Seccion</a>
+        </div>
+    </div>
+</nav>
+
+<nav class="bg-gray-50 dark:bg-gray-700">
+    <div class="max-w-screen-xl px-4 py-3 mx-auto">
+        <div class="flex items-center">
+            <ul class="flex flex-row font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm">
+                <li>
+                    <a href="#" class="text-gray-900 dark:text-white hover:underline" aria-current="page">Inicio</a>
+                </li>
+                <li>
+                    <a href="#" class="text-gray-900 dark:text-white hover:underline">Pedidos</a>
+                </li>
+                <li>
+                    <a href="#" class="text-gray-900 dark:text-white hover:underline">Administar Muebles</a>
+                </li>
+                <li>
+                    <a href="#" class="text-gray-900 dark:text-white hover:underline">Clientes</a>
+                </li>
+                <li>
+                    <a href="#" class="text-gray-900 dark:text-white hover:underline">Ventas</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
 
-                
-@yield('content')
+
+    @yield('content')
 
 
 
@@ -48,65 +68,36 @@
 
 
 
-                    <footer class="bg-gray-800 text-white py-8">
-                        <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
-                            <div>
-                                <h3 class="font-bold mb-2">Ayuda</h3>
-                                <ul>
-                                    <li><a href="" class="hover:underline">Preguntas Frecuentes</a></li>
-                                    <li><a href="#" class="hover:underline">Información de Envío</a></li>
-                                    <li><a href="#" class="hover:underline">Devoluciones</a></li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h3 class="font-bold mb-2">Servicios</h3>
-                                <ul>
-                                    <li><a href="#" class="hover:underline">Mesa de Regalos</a></li>
-                                    <li><a href="#" class="hover:underline">Trade Alliance</a></li>
-                                    <li><a href="#" class="hover:underline">Facturación</a></li>
-                                    <li><a href="#" class="hover:underline">Design Crew</a></li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h3 class="font-bold mb-2">Atención al Cliente</h3>
-                                <ul>
-                                    <li><a href="t#" class="hover:underline">332345667</a></li>
-                                    <li><a href="#"
-                                            class="hover:underline">postventa@naturalArt.com.mx</a></li>
-                                    <li><a href="#" class="hover:underline">Promociones y Sorteos</a></li>
-                                </ul>
-                                <h3 class="font-bold mt-4 mb-2">Nuestra Compañía</h3>
-                                <ul>
-                                    <li><a href="#" class="hover:underline">Shop for Good</a></li>
-                                    <li><a href="#" class="hover:underline">Acerca de West Elm</a></li>
-                                    <li><a href="#" class="hover:underline">Bolsa de trabajo</a></li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h3 class="font-bold mb-2">Encuentra nuestra tienda</h3>
-                                <ul>
-                                    <li><a href="#" class="hover:underline">Ubicaciones</a></li>
-                                </ul>
-                                <h3 class="font-bold mt-4 mb-2">Tu cuenta</h3>
-                                <ul>
-                                    <li><a href="#" class="hover:underline">Mis Compras</a></li>
-                                    <li><a href="#" class="hover:underline">Administrar Mi Cuenta</a></li>
-                                    <li><a href="#" class="hover:underline">Mapa del Sitio</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="container mx-auto text-center text-sm mt-8">
-                            <p>El formato de los precios puede verse afectado por las configuraciones y diferencia de
-                                navegadores.</p>
-                            <p class="mt-2">© Términos y condiciones / Aviso de Privacidad © 2024 / | Natural Art | Todos
-                                los derechos reservados N.A. ®</p>
-                        </div>
-                        <div class="bg-gray-700 text-center py-2 mt-4">
-                            <p>Al navegar en este sitio aceptas el uso de cookies, las cuales nos ayudan a mejorar tu
-                                experiencia de navegación. <a href="#" class="text-red-500 hover:underline">Más
-                                    información</a></p>
-                        </div>
-                    </footer>
+   
+
+<footer class="bg-white rounded-lg shadow dark:bg-gray-900 m-4">
+    <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+        <div class="sm:flex sm:items-center sm:justify-between">
+            <a href="https://flowbite.com/" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
+                <img src="{{ asset('images/login/logoorg.png') }}" class="h-12" alt="Flowbite Logo" />
+                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Natural Art</span>
+            </a>
+            <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
+                <li>
+                    <a href="#" class="hover:underline me-4 md:me-6">Acerca de </a>
+                </li>
+                <li>
+                    <a href="#" class="hover:underline me-4 md:me-6">Politica de Privacidad</a>
+                </li>
+                <li>
+                    <a href="#" class="hover:underline me-4 md:me-6">Licencias</a>
+                </li>
+                <li>
+                    <a href="#" class="hover:underline">Contacto</a>
+                </li>
+            </ul>
+        </div>
+        <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+        <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="" class="hover:underline">X Force™</a>. Todos los derechos reservados.</span>
+    </div>
+</footer>
+
+
 
 
 
