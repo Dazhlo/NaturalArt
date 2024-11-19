@@ -36,6 +36,9 @@ Route::view('/registrar','/login/registrar');
 
 Route::view('/AdminInicio','/admin/inicio');
 Route::view('/AdminInicio1','/admin/home');
+Route::view('/AdminMuebles','/admin/muebles');
+Route::view('/Pedidos','/admin/Pedidos');
+
 
 
 
