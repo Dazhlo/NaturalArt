@@ -25,13 +25,14 @@
             <div class="flex space-x-2 mt-2">
                 {{-- form to restar raza --}}
                 <form class="" action=" "><button
+                    @csrf
                         class="w-10 bg-red-500 text-white py-2 rounded-md mt-2 hover:bg-red-700"> -
                     </button></form>
 
                 <input class="px-2 py-1 w-6 hover:grey  " type="text" placeholder="1">
                 {{-- form para sumar --}}
                 <form action=" "><button class="w-10 bg-red-500 text-white py-2 rounded-md mt-2 hover:bg-red-700"> +
-                    </button></form>
+                    @csrf  </button></form>
             </div>
             <form class="" action=" ">
             <label for="color" class="py-5 block mb-2 text-sm font-medium text-gray-900">Color:</label>
