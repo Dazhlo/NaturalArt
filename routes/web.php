@@ -28,6 +28,7 @@ Route::view('/Perfil','/cliente/miPerfil');
 Route::view('/Perfil/Metodos','/cliente/perfil/metodoPago');
 Route::view('/Perfil/Domicilio','/cliente/perfil/domicilio');
 
+
 //login y registro 
 Route::view('/login','/login/login');
 Route::view('/registrar','/login/registrar');
@@ -39,6 +40,9 @@ Route::view('/AdminInicio','/admin/inicio');
 Route::view('/AdminInicio1','/admin/home');
 Route::view('/AdminMuebles','/admin/muebles');
 Route::view('/Pedidos','/admin/Pedidos');
+Route::view('/Muebles/Agregar','/admin/agregarMuebles');
+
+
 
 
 

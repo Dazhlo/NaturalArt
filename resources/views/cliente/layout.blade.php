@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Natural Art México - @yield('title')</title>
     <script src="https://cdn.tailwindcss.com"></script>
-
+    {{-- php artisan storage:link --}}
 
 </head>
 
@@ -20,7 +20,7 @@
                         <h1 class="text-2xl font-bold">Natural Art</h1> 
                     </div>
                     <div class="flex items-center space-x-4"> <a href="#" class="text-gray-600">Mis Compras</a> <a
-                            href="/menu" class="text-gray-600">Iniciar sesión</a> <a href="#"
+                            href="/menu" class="text-gray-600">Iniciar sesión</a> <a href="{{ url('/login') }}"
                             class="text-gray-600"><i class="fas fa-lock"></i></a> </div>
                 </div>
 
