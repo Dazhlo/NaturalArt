@@ -36,7 +36,7 @@
         </div>
         
 
-        <form accion="" method="">
+        {{-- <form accion="" method="">
             @csrf <br>
             <br>
             <div class="mb-4"> <label for="tarjeta" class="block text-gray-700">Numero de Tarjeta<span
@@ -77,7 +77,7 @@
 
            
 
-        </form>
+        </form> --}}
 
        
         <form accion="" method="">
@@ -94,11 +94,11 @@
             <div class="mb-4"> <label for="apellidoP" class="block text-gray-700">Nombre completo <span
                         class="text-red-500">*</span></label> <input type="text" id="apellidoP"
                     class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
-                    required> </div>
+                    required> </div>z
                     <div class="flex"> 
-                        <div class="    rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"> 
+                        <div class="rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"> 
                             <label for="apellidoP" class="block text-gray-700">Fecha de vencimiento <span
-                                class="text-red-500">*</span></label>
+                                class="text-red-500"></span></label>
                                 <input type="text" id="apellidoP"
                     class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                     required> 
@@ -106,7 +106,7 @@
                         </div>
                         <div class="rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"> 
                             <label for="apellidoP" class="block text-gray-700">Codigo de seguridad <span
-                                class="text-red-500">*</span></label>
+                                class="text-red-500"></span></label>
                                 <input type="text" id="apellidoP"
                     class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                     required> 

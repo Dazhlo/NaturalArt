@@ -12,11 +12,11 @@
             </a>
             <br>
 
-            <a href="">
+            <a href="/Perfil/Metodos">
                 <div class="p-6 bg-gray-100 text-center rounded-md  ">Metodo de pago</div>
             </a>
             <br>
-            <a href="">
+            <a href="/Perfil/Domicilio">
                 <div class="p-6 bg-gray-100 text-center rounded-md  ">Mi domicilio </div>
             </a> <br>
 
@@ -35,8 +35,8 @@
 
         </div>
 
-
-        <div class="col-span-2 row-span-4">
+        @yield('content')
+        {{-- <div class="col-span-2 row-span-4">
             <h2 class="py-5 text-2xl font-bold mb-6 ">Datos Personales</h2>
             <div class="col-span-2 row-span-2 col-start-2 row-start-2">
                 <h2 class="text-xl mb-2">Nombre </h3>
@@ -49,7 +49,7 @@
             <div class="col-span-2 row-span-2 col-start-2 row-start-2">
                 <h2 class="text-xl mb-2">Numero telefonico </h3>
                     <h2 class=" mb-6 ">3322155</h2>
-            </div>
+            </div> --}}
 
 
 
