@@ -47,10 +47,10 @@
 
                     @csrf
                     <div class="mb-4">
-                        <br><label for="apellidoP" class="block text-gray-700 text-center">Completa la siguiente inforamcion
+                        <br><label for="apellidoP" class="block text-gray-700 text-center">Completa la siguiente informacion
                             <span class="text-red-500"></span></label>
                         <label for="apellidoP" class="block text-gray-700">Nombre <span
-                                class="text-red-500">*</span></label> <input type="text" id="apellidoP"
+                                class="text-red-500">*</span></label> <input type="text" id="apellidoP" name=""
                             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                             required>
                     </div>
@@ -68,34 +68,40 @@
                             required>
                     </div>
                     <div class="mb-4">
-                        <label for="apellidoP" class="w-100 block text-gray-700">Municipio<span
+                        <label for="apellidoP" class="w-100 block text-gray-700">Precio<span
                                 class="text-red-500">*</span></label> <input type="text" id="apellidoP"
                             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                             required>
                     </div>
                     <div class="mb-4">
-                        <label for="apellidoP" class="w-100 block text-gray-700">Colonia<span
+                        <label for="apellidoP" class="w-100 block text-gray-700">Descuento  <span
                                 class="text-red-500">*</span></label> <input type="text" id="apellidoP"
                             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                             required>
                     </div>
                     <div class="mb-4">
-                        <label for="apellidoP" class="w-100 block text-gray-700">Numero interior/exterior<span
+                        <label for="apellidoP" class="w-100 block text-gray-700">Disponibilidad (Stock)<span
                                 class="text-red-500">*</span></label> <input type="text" id="apellidoP"
                             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                             required>
                     </div>
 
                     <div class="mb-4">
-                        <label for="apellidoP" class="w-100 block text-gray-700">Indicaciones para la entrega <span
-                                class="text-red-500">*</span></label> <input type="text" id="apellidoP"
-                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
-                            required>
+                        <label for="apellidoP" class="w-100 block text-gray-700">Descripcion<span
+                                class="text-red-500">*</span></label> <textarea  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+                                name="" id="" cols="30" rows="10"></textarea>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="user_avatar">Upload file</label>
+                        <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="user_avatar_help" id="user_avatar" type="file">
+                        <div class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="user_avatar_help"> </div>
                     </div>
                     <button type="submit"
                         class="w-full dark:bg-gray-700 text-white py-2 rounded-md mt-2 hover:dark:bg-gray-900">Guardar
                     </button>
 
+                   
+                      
 
 
                 </form>
@@ -108,23 +114,34 @@
             </div>
         </div>
         
+        
+        <div class=" py-6  rounded-md">
+            <form class="aling" action="">
+               
+
+            </form>
+            
+
+        </div>
         <div class=" py-6 bg-gray-200 rounded-md">
             
             <table class="table-auto w-full text-left">
                 <thead class="bg-gray-200">
                     <tr>
-                        <th class="px-4 py-2">ID Pedido</th>
-                        <th class="px-4 py-2">ID Pedido</th>
+                        <th class="px-4 py-2">ID Categora</th>
+                        <th class="px-4 py-2">Categoria</th>
                     </thead>
                     <tbody>
-                        <tr class="bg-white border-b">
-                            <td class="px-4 py-2">Pendiente</td>
-                            <td class="px-4 py-2">Juan Pérez</td>
+                        <tr class="bg-gray-500 border-b">
+                            <td class="px-4 py-2">1</td>
+                            <td class="px-4 py-2">Interior</td>
                         </tr>
-
+                    </tbody>
+                </table>
 
 
         </div>
+
 
 
     </div>
