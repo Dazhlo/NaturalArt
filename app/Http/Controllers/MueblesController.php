@@ -9,7 +9,7 @@ class MueblesController extends Controller
 {
     public function crear(Request $request)
     {
-       // try {
+        //try {
           
             $mueble = new muebles();
             
@@ -28,19 +28,11 @@ class MueblesController extends Controller
             }
     
             $mueble->save();
-        //    Auth::login($admin);
+        //Auth::login($admin);
             return redirect('/mueble/form');
-     //   } catch (\Exception $e) {
+        //} catch (\Exception $e) {
             return back()->withErrors([
                 'error' => 'Ocurrió un error: ' . $e->getMessage(),
-            ])->withInput();
-        }
+        ])->withInput();
     }
-    
-
-
-
-
-
-
 }
