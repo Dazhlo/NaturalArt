@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\muebles;
 use Illuminate\Http\Request;
-
+//se agregue este comentario para hacer la prueba
 class MueblesController extends Controller
 {
     public function crear(Request $request)
