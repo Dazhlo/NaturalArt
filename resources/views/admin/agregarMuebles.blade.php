@@ -159,7 +159,7 @@
                     <th class="px-4 py-2">Categoria</th>
             </thead>
             <tbody>
-                @foreach ($categorias as $item)
+                @foreach ($categorias as $item) 
                 <tr class="bg-gray-500 border-b">
                     <td class="px-4 py-2">{{$item->id}}</td>
                     <td class="px-4 py-2">{{$item->nombre}}</td>
