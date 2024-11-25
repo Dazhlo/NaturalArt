@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\CategoriasContoller;
+use App\Http\Controllers\menuController;
+use App\Http\Controllers\MueblesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,7 +24,7 @@ Route::get('/', function () {
 //ruta provisional de completar perfiol 
 
 Route::view('/Cliente/completar/perfil','/cliente/completarPerfil');
-Route::view('/Catalogo','/cliente/catalogo');
+//  Route::view('/Catalogo','/cliente/catalogo');
 Route::view('/Carrito','/cliente/carrito');
 Route::view('/Menu/Detalles','/cliente/detallesMenu');
 Route::view('/Perfil','/cliente/perfil/miPerfil');
@@ -40,7 +43,14 @@ Route::view('/AdminInicio','/admin/inicio');
 Route::view('/AdminInicio1','/admin/home');
 Route::view('/AdminMuebles','/admin/muebles');
 Route::view('/Pedidos','/admin/Pedidos');
-Route::view('/Muebles/Agregar','/admin/agregarMuebles');
+//ruta para el menu
+Route::get('/Catalogo',[menuController::class,'showMenu']);
+
+//Ruta para mostrar la vista, funciuon solo retorna la vista 
+Route::get('/Agregar/Muebles',[CategoriasContoller::class,'show']);
+//ruta para guardar muebles 
+Route::post('/Store/Muebles',[MueblesController::class,'crear']);
+
 
 
 
