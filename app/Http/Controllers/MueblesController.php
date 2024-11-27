@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\muebles;
+use App\Models\Mueble;
 
 use Illuminate\Http\Request;
 //se agregue este comentario para hacer la prueba
@@ -19,7 +19,7 @@ class MueblesController extends Controller
         //try {
           
 >>>>>>> 57c38625d037f3d5936c6047b53de3656c87edaa
-            $mueble = new muebles();
+            $mueble = new Mueble();
             $mueble->categoria_id = $request->id_catalogo;
             $mueble->nombre = $request->nombre;
             $mueble->precio = $request->precio;

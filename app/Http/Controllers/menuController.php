@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\muebles;
+use App\Models\Mueble;
 
 class menuController extends Controller
 {
@@ -12,7 +12,7 @@ class menuController extends Controller
     public function showMenu(){
     //  if(empty($muebles)){
     //  }
-$muebles=muebles::all();
+    $muebles=Mueble::all();
     return view('/cliente/catalogo') -> with('muebles',$muebles);
 
     }

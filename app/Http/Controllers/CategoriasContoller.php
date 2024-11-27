@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\categorias;
+use App\Models\Categoria;
 class CategoriasContoller extends Controller
 {
     public function show(){
-        $categorias =categorias::all();
+        $categorias =Categoria::all();
         return view('/admin/agregarMuebles')-> with('categorias',$categorias);
 
 

@@ -11,7 +11,7 @@ class CarritoController extends Controller
         $id = session()->get('cliente');    //esta session se debe crear en el archivo de autentificación
         $carrito = \Cart::session($id)->getContent();
         //dd($carrito);
-        //return view('/carrito/carrito')->with('cursos',$carrito);  Debera retornar la ruta de la página carrito
+        return view('/muebles/carrito')->with('muebles',$muebles);  //Debera retornar la ruta de la página carrito
     }
 
     public function agregarCarrito(Request $request) {
@@ -47,6 +47,7 @@ class CarritoController extends Controller
     public function quitarCarrito(Request $request) {
         $id = session()->get('cliente');    //esta session se debe crear en el archivo de autentificación
         \Cart::session($id)->remove($request->id);
+        return back();      //falta probar si es que no treuna
         //return redirect('/carrito/cursos');   Debe retornar a la vista de carrito
     }
 
@@ -55,6 +56,7 @@ class CarritoController extends Controller
         \Cart::session($id)->update($request->id, array(
             'quantity' => 1, //agrega
         ));
+        return back();      //falta probar si es que no treuna
         //return redirect('/carrito/cursos');   Debe retornar a la vista de carrito
     }
 
@@ -63,6 +65,7 @@ class CarritoController extends Controller
         \Cart::session($id)->update($request->id, array(
             'quantity' => -1, //suma
         ));
+        return back();      //falta probar si es que no treuna
         //return redirect('/carrito/cursos');   Debe retornar a la vista de carrito
     }
 }
