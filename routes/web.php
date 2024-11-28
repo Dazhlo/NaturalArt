@@ -60,6 +60,7 @@ Route::post('/store/muebles',[MueblesController::class,'crear']);
 
 //Rutas para el menu
 Route::get('/catalogo',[menuController::class,'showMenu']);
+Route::get('/catalogo',[menuController::class,'showMenu']);
 
 //Rutas de CARRITO
 Route::get('/carrito',[CarritoController::class,'productosCarrito']);
