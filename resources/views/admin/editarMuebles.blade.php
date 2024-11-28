@@ -43,51 +43,52 @@
             <hr>
             <div className="col-span-3 row-span-4 col-start-2 row-start-2">
 
-                <form class="aling" action="/crear/muebles" method="POST" >
-
+                <form class="aling" action="/Mueble/Update/{{$muebles->id}}" method="POST" >
                     @csrf
+                    @method('PUT')
+                    
                     <div class="mb-4">
                         <br><label for="" class="block text-gray-700 text-center">Completa la siguiente informacion
                             <span class="text-red-500"></span></label>
                         <label for="nombre" class="block text-gray-700">Nombre <span class="text-red-500">*</span></label>
-                        <input type="text" id="nombre" name="nombre"
+                        <input type="text" id="nombre" name="nombre" placeholder="{{$muebles->nombre}}" 
                             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                             required>
                     </div>
                     <div class="mb-4">
                         <label for="id_catalogo" class="w-100 block text-gray-700">id catalogo<span
                                 class="text-red-500">*</span></label> <input name="id_catalogo" type="text"
-                            id="id_catalogo"
+                            id="id_catalogo" placeholder="{{$muebles->categoria_id}}"
                             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
-                            required>
+                            required> 
                     </div>
                     <div class="mb-4">
                         <label for="meterial" class="w-100 block text-gray-700">Material<span
-                                class="text-red-500">*</span></label> <input name="meterial" type="text" id="meterial"
+                                class="text-red-500">*</span></label> <input name="meterial" type="text" id="meterial" placeholder="{{$muebles->meterial}}"
                             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                             required>
                     </div>
                     <div class="mb-4">
                         <label for="color" class="w-100 block text-gray-700">Color<span
-                                class="text-red-500">*</span></label> <input name="color" type="text" id="color"
+                                class="text-red-500">*</span></label> <input name="color" type="text" id="color" placeholder="{{$muebles->color}}"
                             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                             required>
             </div>
             <div class="mb-4">
                 <label for="precio" class="w-100 block text-gray-700">Precio<span class="text-red-500">*</span></label>
-                <input name="precio" type="text" id="precio"
+                <input name="precio" type="text" id="precio" placeholder="{{$muebles->precio}}"
                     class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                     required>
             </div>
             <div class="mb-4">
                 <label for="descuento" class="w-100 block text-gray-700">Descuento <span
-                        class="text-red-500">*</span></label> <input name="descuento" type="text" id="descuento"
+                        class="text-red-500">*</span></label> <input name="descuento" type="text" id="descuento" placeholder="{{$muebles->descuento}}"
                     class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                     required>
             </div>
             <div class="mb-4">
                 <label for="stock" class="w-100 block text-gray-700">Disponibilidad (Stock)<span
-                        class="text-red-500">*</span></label> <input name="stock" type="text" id="stock"
+                        class="text-red-500">*</span></label> <input name="stock" type="text" id="stock" placeholder="{{$muebles->stock}}"
                     class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                     required>
             </div>
@@ -97,7 +98,7 @@
                         class="text-red-500">*</span></label>
                 <textarea name="descripcion"
                     class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
-                    id="descripcion" cols="30" rows="10"></textarea>
+                    id="descripcion" cols="30" rows="10" placeholder="{{$muebles->descripcion}}"></textarea>
             </div>
 
             <div class="mb-4">

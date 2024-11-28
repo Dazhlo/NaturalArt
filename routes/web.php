@@ -57,12 +57,12 @@ Route::view('/AdminMuebles','/admin/muebles');
 Route::view('/Pedidos','/admin/Pedidos');
 
 //Ruta para mostrar la vista, funciuon solo retorna la vista 
-Route::get('/agregar/muebles',[CategoriasContoller::class,'show']);
+Route::get('/Agregar/Muebles',[CategoriasContoller::class,'show']);
 //ruta para guardar muebles 
-Route::post('/store/muebles',[MueblesController::class,'crear']);
+Route::post('/Crear/Muebles',[MueblesController::class,'crear']);
 
 //Rutas para el MENÚ
-Route::get('/catalogo',[menuController::class,'showMenu']);
+Route::get('/Catalogo',[menuController::class,'showMenu']);
 Route::get('/mueble/{id}/detalles',[menuController::class,'showMueble']);
 
 //Rutas de CARRITO
