@@ -18,7 +18,7 @@ class MueblesController extends Controller
 
   public function crear(Request $request)
   {
-    //try {
+    try {
       //  dd($request);
       $mueble = new Mueble();
       $mueble->categoria_id = $request->id_catalogo;
@@ -44,11 +44,11 @@ class MueblesController extends Controller
       $mueble->save();
       //    Auth::login($admin);
       return redirect('/Agregar/Muebles');
-   // } catch (\Exception $e) {
-    //   return back()->withErrors([
-    //     'error' => 'Ocurrió un error: ' . $e->getMessage(),
-    //   ])->withInput();
-    // }
+   } catch (\Exception $e) {
+      return back()->withErrors([
+        'error' => 'Ocurrió un error: ' . $e->getMessage(),
+      ])->withInput();
+    }
   }
   public function editar($id)
   {

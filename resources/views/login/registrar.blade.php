@@ -18,13 +18,19 @@
         </div>
     </nav>
 
-    <hr style="margin-top: 10%">
+    <hr style="margin-top: 10%"> 
     
     <div class="flex-grow flex justify-center items-center w-full mt-16">
         <div class="flex flex-col items-center bg-white shadow-lg rounded-lg p-8 space-y-8 w-full max-w-lg">
-            @error('e_mensaje') <span class="text-red-500">{{$message}}</span> <br> @enderror
+            @error('e_mensaje')
+                <ul>
+                    <li><span class="text-red-500">{{$message}}</span></li>@enderror
+                @error('e_correo') <li><span class="text-red-500">{{$message}}</span></li>@enderror
+                @error('e_telefono')<li><span class="text-red-500">{{$message}}</span></li>
+            </ul>@enderror
+            {{-- @error('e_mensaje') <br><br><br><br><br><br> <span class="text-red-500">{{$message}}</span> <br> @enderror
             @error('e_correo') <span class="text-red-500">{{$message}}</span> <br> @enderror
-            @error('e_telefono') <span class="text-red-500">{{$message}}</span> <br> @enderror
+            @error('e_telefono') <span class="text-red-500">{{$message}}</span> <br> @enderror --}}
 
             <form action="/registrarse" method="POST" class="w-full space-y-6">
                 @csrf

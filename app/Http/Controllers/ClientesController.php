@@ -11,9 +11,12 @@ use App\Models\Perfile;
 
 class ClientesController extends Controller
 {
-    public function profile($id) {
+    public function profile() {
+        $id = session()->get('cliente');
         $cliente = Cliente::find($id);
-        return view('/clientes/perfil')->with('cliente',$cliente);
+        $perfil = Perfile::where('cliente_id',$id)->first();
+        // dd($cliente,$perfil);
+        return view('/cliente/perfil/miPerfil')->with('cliente',$cliente)->with('perfil',$perfil);
     }
     
     // Vista para crear un cliente

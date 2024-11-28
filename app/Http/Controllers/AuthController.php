@@ -18,6 +18,7 @@ class AuthController extends Controller
     }
 
     public function login(Request $request) {
+        // dd($request->all());
         $credentials = $request->validate([
             'correo' => ['required', 'email'],
             'contraseña' => ['required'], 
@@ -41,7 +42,7 @@ class AuthController extends Controller
         
         return back()->withErrors([
             'correo' => 'Las credenciales proporcionadas no coinciden con nuestros registros.',
-        ])->onlyInput('correo');
+        ]);
     }
 
     // Método de autenticación de Google

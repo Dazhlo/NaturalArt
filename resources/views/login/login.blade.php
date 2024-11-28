@@ -20,17 +20,6 @@
         </div>
     </nav>
 
-    {{-- Mensajes de error --}}
-    @if ($errors->any())
-        <div class="mb-4 text-red-600">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
     <div class="flex-grow flex justify-center items-center w-full">
         <div class="flex flex-col items-center bg-white shadow-lg rounded-lg p-8 space-y-8 w-full max-w-lg">
             <div class="w-32 h-32">
@@ -54,6 +43,11 @@
                     <input type="email" name="correo" placeholder="ejemplo@correo.com"
                         class="block w-full h-11 pr-5 pl-12 py-2.5 text-base font-normal shadow-sm text-gray-900 bg-gray-50 border border-gray-300 rounded-full placeholder-gray-400 focus:ring-red-500 focus:border-red-500 focus:outline-none">
                 </div>
+                    @error('correo')
+                        <h1 class="mb-4 text-red-600">
+                            {{$message}}
+                        </h1>
+                    @enderror
                 <div class="relative text-gray-500 focus-within:text-gray-900">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                         <svg class="stroke-current" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
@@ -67,6 +61,11 @@
                     <input type="password" name="contraseña" placeholder="********"
                         class="block w-full h-11 pr-5 pl-12 py-2.5 text-base font-normal shadow-sm text-gray-900 bg-gray-50 border border-gray-300 rounded-full placeholder-gray-400 focus:ring-red-500 focus:border-red-500 focus:outline-none">
                 </div>
+                    @error('contraseña')
+                        <h1 class="mb-4 text-red-600">
+                            {{$message}}
+                        </h1>
+                    @enderror
 
                 <button type="submit"
                     class="w-full bg-red-500 text-white py-2 rounded-md shadow-md  hover:bg-gray-800">
@@ -79,8 +78,10 @@
                     <div class="flex-1 border-t border-gray-300"></div>
                 </div>
 
-                <a href="/registrarse" class="w-full bg-red-500 text-white py-2 rounded-md shadow-md hover:bg-gray-800">
-                    REGISTRARSE
+                <a href="/registrarse">
+                    <button type="button" class="w-full bg-red-500 text-white py-2 rounded-md shadow-md hover:bg-gray-800">
+                        REGISTRARSE
+                    </button>
                 </a>
 
                 <div class="flex justify-center space-x-4">

@@ -47,48 +47,69 @@
                     <div class="mb-4">
                         <br>
                         <label for="apellidoP" class="block text-gray-700">Dirrecion <span
-                                class="text-red-500">*</span></label> <input type="text" id="apellidoP"
+                                class="text-red-500">*</span></label> <input type="text" id="apellidoP" name="dirrecion"
                             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                             required>
+                            @error('dirrecion')
+                        <span class="text-red-500">Dirrecion no valida</span>
+                    @enderror
                     </div> 
                   
                     <div class="mb-4">
-                        <label for="apellidoP" class="w-100 block text-gray-700">Codigo Postal<span
-                                class="text-red-500">*</span></label> <input type="text" id="apellidoP"
+                        <label for="codigoPostal" class="w-100 block text-gray-700">Codigo Postal<span
+                                class="text-red-500">*</span></label> <input type="text" id="codigoPostal" name="codigoPostal"
                             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                             required>
+                            @error('codigoPostal')
+                        <span class="text-red-500">Codigo Postal no valido</span>
+                    @enderror
                     </div>   
                     <div class="mb-4">
-                        <label for="apellidoP" class="w-100 block text-gray-700">Estado<span
-                                class="text-red-500">*</span></label> <input type="text" id="apellidoP"
+                        <label for="estado" class="w-100 block text-gray-700">Estado<span
+                                class="text-red-500">*</span></label> <input type="text" id="estado" name="estado"
                             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                             required>
+                            @error('estado')
+                        <span class="text-red-500">Dato no valido</span>
+                    @enderror
+                    </div> 
                     </div>
                     <div class="mb-4">
-                        <label for="apellidoP" class="w-100 block text-gray-700">Municipio<span
-                                class="text-red-500">*</span></label> <input type="text" id="apellidoP"
+                        <label for="municipio" class="w-100 block text-gray-700">Municipio<span
+                                class="text-red-500">*</span></label> <input type="text" id="municipio" name="municipio"
                             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                             required>
                     </div>         
                     <div class="mb-4">
-                        <label for="apellidoP" class="w-100 block text-gray-700">Colonia<span
-                                class="text-red-500">*</span></label> <input type="text" id="apellidoP"
+                        <label for="colonia" class="w-100 block text-gray-700">Colonia<span
+                                class="text-red-500">*</span></label> <input type="text" id="colonia" name="colonia"
                             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                             required>
+                            @error('colonia')
+                        <span class="text-red-500">Dato no valido</span>
+                    @enderror
                     </div>         
                     <div class="mb-4">
-                        <label for="apellidoP" class="w-100 block text-gray-700">Numero interior/exterior<span
-                                class="text-red-500">*</span></label> <input type="text" id="apellidoP"
+                        <label for="numeroDomicilio" class="w-100 block text-gray-700">Numero interior/exterior<span
+                                class="text-red-500">*</span></label> <input type="text" id="numeroDomicilio" name="numeroDomicilio"
                             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                             required>
+                            @error('numeroDomicilio')
+                        <span class="text-red-500">Dato no valido</span>
+                    @enderror
                     </div>  
                     
                     <div class="mb-4">
-                        <label for="apellidoP" class="w-100 block text-gray-700">Indicaciones para la entrega <span
-                                class="text-red-500">*</span></label> <input type="text" id="apellidoP"
+                        <label for="entregas" class="w-100 block text-gray-700">Indicaciones para la entrega <span
+                                class="text-red-500">*</span></label> <input type="text" id="entregas" name="entregas"
                             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                             required>
+                            @error('entregas')
+                        <span class="text-red-500">Dato no valido</span>
+                    @enderror
                     </div>    
+
+
                     <button type="submit" class="w-full bg-red-500 text-white py-2 rounded-md mt-2 hover:bg-red-700">Continuar
                     </button>
                   
