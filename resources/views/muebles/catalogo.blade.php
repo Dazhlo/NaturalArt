@@ -23,8 +23,10 @@
                     <h2 class="text-2xl font-bold mb-4">Catálogo</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         @foreach ($muebles as $prod)
-                            <div class="bg-white p-4 rounded-lg shadow-md"> 
-                                <img src="{{ $prod->image_url }}" alt="{{ $prod->nombre }}" class="w-full h-48 object-cover mb-4 rounded">
+                            <div class="bg-white p-4 rounded-lg shadow-md">
+                                <a href="/mueble/{{$prod->id}}/detalles">
+                                    <img src="{{ $prod->image_url }}" alt="{{ $prod->nombre }}" class="w-full h-48 object-cover mb-4 rounded">
+                                </a>
                                 <h3 class="text-xl font-bold mb-2">{{ $prod->nombre }}</h3>
                                 <p class="text-red-500">${{ $prod->precio }}</p>
                                 <form action="/carrito/agregar" method="POST">

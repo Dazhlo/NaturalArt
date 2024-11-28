@@ -29,7 +29,6 @@ Route::get('/', function () {
 //ruta provisional de completar perfiol 
 Route::view('/Cliente/completar/perfil','/cliente/completarPerfil');
 
-Route::view('/catalogo','/muebles/catalogo');
 Route::view('/Menu/Detalles','/cliente/detallesMenu');
 Route::view('/Perfil','/cliente/perfil/miPerfil');
 Route::view('/Perfil/Metodos','/cliente/perfil/metodoPago');
@@ -58,9 +57,9 @@ Route::get('/agregar/muebles',[CategoriasContoller::class,'show']);
 //ruta para guardar muebles 
 Route::post('/store/muebles',[MueblesController::class,'crear']);
 
-//Rutas para el menu
+//Rutas para el MENÚ
 Route::get('/catalogo',[menuController::class,'showMenu']);
-Route::get('/catalogo',[menuController::class,'showMenu']);
+Route::get('/mueble/{id}/detalles',[menuController::class,'showMueble']);
 
 //Rutas de CARRITO
 Route::get('/carrito',[CarritoController::class,'productosCarrito']);
@@ -69,7 +68,7 @@ Route::post('/carrito/quitar',[CarritoController::class,'quitarCarrito']);
 Route::post('/carrito/aumentar',[CarritoController::class,'aumentarCarrito']);
 Route::post('/carrito/disminuir',[CarritoController::class,'disminuirCarrito']);
 
-//Rutas relacionadas al pago y PayPal
+//Rutas relacionadas al PAGO y PAYPAL
 Route::post('/comprobar/disponibilidad',[PedidosController::class,'comprobarDisponibilidad']); //confirma disponibilidad antes de proceder a PayPal
 Route::get('/pago/exitoso',[PedidosController::class,'exitoso']); //esta es la vista del pago confirmado
 Route::get('/cancelado',[PedidosController::class,'cancelado']); //pago cancelado
