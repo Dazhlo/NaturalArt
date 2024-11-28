@@ -25,6 +25,10 @@ Route::get('/', function () {
     return view('/cliente/layout');
 });
 
+//  Despues de la autentificación
+Route::middleware('auth:cliente')->group(function() {
+    // Aqui van todas las rutas que se deben proteger
+});
 
 //ruta provisional de completar perfiol 
 Route::view('/Cliente/completar/perfil','/cliente/completarPerfil');
