@@ -24,7 +24,6 @@ class PedidosController extends Controller
 
     public function exitoso(Request $request) {
         $id = session()->get('cliente');
-        $carrito = \Cart::session($id)->getContent();
         $pedido = new Pedido();
         
         DB::beginTransaction();
@@ -34,20 +33,22 @@ class PedidosController extends Controller
             $pedido->paypal_paymentId = $request['paymentId'];
             $pedido->paypal_payerId = $request['PayerID'];
             $pedido->token = $request['token'];
-            //$pedido->estado = 'COMPLETO';
+            $pedido->estado = 'ENVIANDO';
             $pedido->save();
             session(['pedidoID'=>$pedido->id]);
 
-            foreach (\Cart::session($id)->getContent() as $mueble) {
+            foreach (\Cart::session($id)->getContent() as $carrito) {
                 $detalles = new Detalles_Pedido();
                 $detalles->pedido_id = $pedido->id;
                 $detalles->cliente_id = $id;
-                $detalles->mueble_id = $mueble->id;
-                $detalles->cantidad = $mueble->quantity;
-                $detalles->total = $mueble->price * $mueble->quantity;
-                //$detalles->estado = 'NO VALIDO';
+                $detalles->mueble_id = $carrito->id;
+                $detalles->cantidad = $carrito->quantity;
+                $detalles->total = $carrito->price * $carrito->quantity;
                 $detalles->save();
-                \Cart::session($id)->remove($mueble->id);
+
+                $mueble = Mueble::find($carrito->id)->update(['disponibiidad' => -$carrito->quantity]);
+
+                \Cart::session($id)->remove($carrito->id);
             }
             DB::commit();
             return view('/confirma cion');

@@ -16,6 +16,14 @@ class CarritoController extends Controller
 
     public function agregarCarrito(Request $request) {
         //dd($request->all());
+        if(session()->get('cliente')) {
+            $id = session()->get('cliente');
+        } else {
+            return back()->withErrors([
+                'session' => 'Para hacer esto debe de iniciar sesión.',
+            ]);
+        }
+
         $id = session()->get('cliente'); //esta session se debe crear en el archivo de autentificación
         
         \Cart::session($id)->add(array(
@@ -35,13 +43,7 @@ class CarritoController extends Controller
             )
         ));
 
-        //El siguiente if queda pendiente de probar
-        //if($request->no == "no") {            //valida que el usario tenga session activa para mandar el carrito
-        //    $curso=Curso::find($request->id);
-        //    return view('/cursos/detalle')->with('curso',$curso);
-        //} else {
-        //    return redirect('/carrito/cursos');
-        //}
+        return back();
     }
 
     public function quitarCarrito(Request $request) {
@@ -54,7 +56,7 @@ class CarritoController extends Controller
     public function aumentarCarrito(Request $request) {
         $id = session()->get('cliente');    //esta session se debe crear en el archivo de autentificación
         \Cart::session($id)->update($request->id, array(
-            'quantity' => 1, //agrega
+            'quantity' => 1, //suma 1
         ));
         return back();      //falta probar si es que no treuna
         //return redirect('/carrito/cursos');   Debe retornar a la vista de carrito
@@ -63,7 +65,7 @@ class CarritoController extends Controller
     public function disminuirCarrito(Request $request) {
         $id = session()->get('cliente');    //esta session se debe crear en el archivo de autentificación
         \Cart::session($id)->update($request->id, array(
-            'quantity' => -1, //suma
+            'quantity' => -1, //resta 1
         ));
         return back();      //falta probar si es que no treuna
         //return redirect('/carrito/cursos');   Debe retornar a la vista de carrito

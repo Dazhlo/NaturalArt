@@ -2,7 +2,12 @@
 @section('title', 'Catalogo')
 @section('content')
 
-
+    {{-- Mensajes de error --}}
+    @if ($error)
+        <div class="mb-4 text-red-600">
+            <p> {{ $error }} </p>
+        </div>
+    @endif
 
     <div class="py-0 grid grid-cols-5 grid-rows-5 gap-4 bg-white p-4 rounded-lg shadow-md mx-auto">
         {{-- chavales aqui es muy importante poner la imagen del mueble --}}
@@ -11,7 +16,7 @@
             <div class="col-span-2 row-span-2 col-start-2 row-start-2">
 
                 {{-- Carga Imagen --}}
-                <img src="{{ $item->attributes->image }}" alt="" class="w-full h-48 object-cover mb-4 rounded">
+                <img src="{{ $item->attributes->image }}" alt="{{ $item->attributes->image }}" class="w-full h-48 object-cover mb-4 rounded">
                 <div class="flex">
                     <img src="" alt="" class="w-1/4 h-2/4 object-cover mb-4 rounded">
                     <img src="" alt="" class="w-1/4 h-2/4 object-cover mb-4 rounded">
@@ -43,7 +48,7 @@
                         </button>
                     </form>
 
-                    <input class="px-2 py-1 w-6 hover:grey" placeholder="{{ $item->quantity }}" disabled>
+                    <input class="px-2 py-1 w-8 hover:grey" placeholder="{{ $item->quantity }}" disabled>
 
                     {{-- form para sumar --}}
                     <form action="/carrito/aumentar">
@@ -58,38 +63,23 @@
                 <div class="py-2 grid grid-cols-2 gap-2 mt-2">
                     {{-- materiales, colores, y algunas especificaciones se pueden poner aqui --}}
                     <div>
-                        <p class="font-bold">Disponibles: {{ $item->attributes->disponibilidad }} </p> <input
-                            class="w-20 hover:grey  " type="text" placeholder="55+">
+                        <p class="font-bold">Medidas: </p> 
+                        <input class="w-21 hover:grey" placeholder="Ancho: {{ $item->attributes->ancho }}" disabled>
+                        <input class="w-21 hover:grey" placeholder="Largo: {{ $item->attributes->largo }}" disabled>
+                        <input class="w-21 hover:grey" placeholder="Alto: {{ $item->attributes->alto }}" disabled>
                     </div>
                     <div>
-                        <p class="font-bold">Color: </p> <input class="w-20 hover:grey  " type="text"
-                            placeholder="CAQUI">
+                        <p class="font-bold">Disponibles:  </p> 
+                        <input class="w-20 hover:grey" placeholder="{{ $item->attributes->disponibilidad }}" disabled>
                     </div>
-
-                    <div class="row-start-2">
-                        <p class="font-bold">Material: </p> <input class="w-20 hover:grey  " type="text"
-                            placeholder="Roble">
-                    </div>
-                    <div class="row-start-2">
-                        <p class="font-bold">Medidas:
-                        <ul>
-                            <li>Ancho: {{ $item->attributes->ancho }}</li>
-                            <li>Largo: {{ $item->attributes->largo }}</li>
-                            <li>Alto: {{ $item->attributes->alto }}</li>
-                        </ul>
-                        </p> <input class="w-20 hover:grey  " type="text" placeholder="Roble">
-                    </div>
-
+                    
                     {{-- informacion adiicional --}}
                 </div>
-                <p class="py-0"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi nisi eos earum vitae
-                    consequatur praesentium cumque libero voluptates molestias repellendus, minus, quod molestiae, dolore
-                    adipisci commodi qui vero facilis. Soluta.
-
+                <p class="py-0">
                     Descripción: {{ $item->attributes->descripcion }}
                 </p>
 
-
+                {{-- este boton seria para comprar unicamente el producto, falta probar --}}
                 <button class="w-full bg-red-500 text-white py-2 rounded-md mt-2 hover:bg-red-700">
                     Confirmar compra
                 </button>
@@ -118,7 +108,7 @@
                 <p class="text-sm text-gray-600 mt-4">Los precios aplican de acuerdo a forma de pago.</p>
             </div>
 
-            <a href="/Catalogo">
+            <a href="/catalogo">
                 Seguir comprando
             </a>
 
@@ -130,8 +120,6 @@
             </form>
         </div>
     </div>
-
-
 
 
 @endsection

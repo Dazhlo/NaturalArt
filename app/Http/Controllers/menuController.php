@@ -13,7 +13,7 @@ class menuController extends Controller
     //  if(empty($muebles)){
     //  }
     $muebles=Mueble::all();
-    return view('/cliente/catalogo') -> with('muebles',$muebles);
+    return view('/muebles/catalogo') -> with('muebles',$muebles);
 
     }
 

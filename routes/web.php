@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\PedidosController;
-use App\Http\Controllers\ClimaController;
+use App\Http\Controllers\CarritoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,8 +29,7 @@ Route::get('/', function () {
 //ruta provisional de completar perfiol 
 Route::view('/Cliente/completar/perfil','/cliente/completarPerfil');
 
-//  Route::view('/Catalogo','/cliente/catalogo');
-Route::view('/Carrito','/cliente/carrito');
+Route::view('/catalogo','/muebles/catalogo');
 Route::view('/Menu/Detalles','/cliente/detallesMenu');
 Route::view('/Perfil','/cliente/perfil/miPerfil');
 Route::view('/Perfil/Metodos','/cliente/perfil/metodoPago');
@@ -54,13 +53,13 @@ Route::view('/AdminInicio1','/admin/home');
 Route::view('/AdminMuebles','/admin/muebles');
 Route::view('/Pedidos','/admin/Pedidos');
 
-//ruta para el menu
-Route::get('/Catalogo',[menuController::class,'showMenu']);
-
 //Ruta para mostrar la vista, funciuon solo retorna la vista 
-Route::get('/Agregar/Muebles',[CategoriasContoller::class,'show']);
+Route::get('/agregar/muebles',[CategoriasContoller::class,'show']);
 //ruta para guardar muebles 
-Route::post('/Store/Muebles',[MueblesController::class,'crear']);
+Route::post('/store/muebles',[MueblesController::class,'crear']);
+
+//Rutas para el menu
+Route::get('/catalogo',[menuController::class,'showMenu']);
 
 //Rutas de CARRITO
 Route::get('/carrito',[CarritoController::class,'productosCarrito']);
