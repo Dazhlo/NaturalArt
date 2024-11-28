@@ -47,7 +47,7 @@ class ClientesController extends Controller
         try {
             $cliente = new Cliente();
             $cliente->correo = $request->correo;
-            $cliente->contraseña = Hash::make($request  ->contraseña);
+            $cliente->contraseña = Hash::make($request->contraseña);
             $cliente->google_id = null;
             $cliente->token_id = null;
             $cliente->estado = 'activo';
@@ -83,12 +83,75 @@ class ClientesController extends Controller
 
         return redirect('/iniciar');
     }
-
+    
     public function edit() {
         $id = session()->get('cliente');
         $cliente = Cliente::find($id);
-        return view('/clientes/editar')->with('cliente',$cliente);
+        $perfil = Perfile::where('cliente_id',$id)->first();
+        return view('/cliente/completarPerfil')->with('cliente',$cliente)->with('perfil',$perfil);
     }    
+    
+    // Proceso para modificar el perfil
+    public function update(Request $request){
+        $id = session()->get('cliente');
+        $cliente = Cliente::find($id);
+        $perfil = Perfile::where('cliente_id',$id)->first();
+
+        $validator = Validator::make($request->all(), [
+            'nombre' => 'required|string|max:25|min:3',
+            'apellido' => 'required|string|max:25|min:3 ',
+            'correo' => 'required|string|max:50|min:8',
+            'contraseña' => 'required|string|max:15|min:8',
+            'contraseña2' => 'required|string|max:15|min:8',
+            'telefono' => 'nullable|integer|digits:10'
+        ]);
+
+        if($validator->fails()) {
+            return back()->withErrors($validator->errors());
+            //return back()->withErrors($validator->errors())->with('inputs',$request->all());
+        } else if($request->contraseña != $request->contraseña2) {
+            $datos = [
+                'contraseña' => 'Las contraseñas no coinciden',
+                'contraseña2' => 'Las contraseñas no coinciden'
+            ];
+            return back()->withErrors($datos);
+        }
+
+        DB::beginTransaction();
+        try {
+            $cliente->correo = $request->correo;
+            $cliente->contraseña = Hash::make($request->contraseña);
+            $cliente->save();
+            
+            $perfil->nombre = $request->nombre;
+            $perfil->apellido = $request->apellido;
+            $perfil->telefono =$request->telefono;
+            $perfil->foto =$request->imagen;
+            $perfil->save();
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            // dd($e);
+            return back()->withErrors([
+                'e_mensaje' => 'Ha ocurrido un error inesperado, intenta cambiando lo siguiente',
+                'e_correo' => 'Intenta con otro CORREO, puede que ya exista en la base de datos',
+                'e_telefono' => 'Intenta con otro TELEFONO, puede que ya exista en la base de datos'
+            ]);
+        }
+
+        if($request->hasfile('imagen')){
+
+            $img=$request->imagen;
+            $nuevo='cliente_'.$cliente->id.'.'.$img->extension();
+            $ruta=$img->storeAs('imagenes/clientes',$nuevo,'public');
+            $ruta='storage/'.$ruta;
+            $cliente->imagen=asset($ruta);
+            $cliente->save();
+        }
+
+        return redirect('/iniciar');
+    }
 
     public function show() {
         $id = session()->get('cliente');
