@@ -69,8 +69,8 @@ class ClientesController extends Controller
             // dd($e);
             return back()->withErrors([
                 'e_mensaje' => 'Ha ocurrido un error inesperado, intenta cambiando lo siguiente',
-                'e_correo' => 'Intenta con otro CORREO, puede que ya exista en la base de datos',
-                'e_telefono' => 'Intenta con otro TELEFONO, puede que ya exista en la base de datos'
+                'e_correo' => 'Intenta con otro CORREO, puede que ya exista en nuestros registros',
+                'e_telefono' => 'Intenta con otro TELEFONO, puede que ya exista en nuestros registros'
             ]);
         }
 
@@ -95,37 +95,23 @@ class ClientesController extends Controller
     }    
     
     // Proceso para modificar el perfil
-    public function update(Request $request){
+    public function updateData(Request $request){
         $id = session()->get('cliente');
-        $cliente = Cliente::find($id);
         $perfil = Perfile::where('cliente_id',$id)->first();
 
         $validator = Validator::make($request->all(), [
             'nombre' => 'required|string|max:25|min:3',
-            'apellido' => 'required|string|max:25|min:3 ',
-            'correo' => 'required|string|max:50|min:8',
-            'contraseña' => 'required|string|max:15|min:8',
-            'contraseña2' => 'required|string|max:15|min:8',
+            'apellido' => 'required|string|max:25|min:3',
+            'imagen' => 'nullable|image|max:5120',
             'telefono' => 'nullable|integer|digits:10'
         ]);
 
         if($validator->fails()) {
             return back()->withErrors($validator->errors());
-            //return back()->withErrors($validator->errors())->with('inputs',$request->all());
-        } else if($request->contraseña != $request->contraseña2) {
-            $datos = [
-                'contraseña' => 'Las contraseñas no coinciden',
-                'contraseña2' => 'Las contraseñas no coinciden'
-            ];
-            return back()->withErrors($datos);
         }
 
         DB::beginTransaction();
         try {
-            $cliente->correo = $request->correo;
-            $cliente->contraseña = Hash::make($request->contraseña);
-            $cliente->save();
-            
             $perfil->nombre = $request->nombre;
             $perfil->apellido = $request->apellido;
             $perfil->telefono =$request->telefono;
@@ -138,8 +124,7 @@ class ClientesController extends Controller
             // dd($e);
             return back()->withErrors([
                 'e_mensaje' => 'Ha ocurrido un error inesperado, intenta cambiando lo siguiente',
-                'e_correo' => 'Intenta con otro CORREO, puede que ya exista en la base de datos',
-                'e_telefono' => 'Intenta con otro TELEFONO, puede que ya exista en la base de datos'
+                'e_telefono' => 'Intenta con otro TELEFONO, puede que ya exista en nuestros registros'
             ]);
         }
 
@@ -153,7 +138,47 @@ class ClientesController extends Controller
             $cliente->save();
         }
 
-        return redirect('/iniciar');
+        return back()->width(['mensaje' => 'Se actualizaron los datos correctamente']);
+    }
+    
+    // Proceso para modificar el perfil
+    public function updateCredentials(Request $request){
+        $id = session()->get('cliente');
+        $cliente = Cliente::find($id);
+
+        $validator = Validator::make($request->all(), [
+            'correo' => 'required|string|max:50|min:8',
+            'contraseña' => 'required|string|max:15|min:8',
+            'contraseña2' => 'required|string|max:15|min:8'
+        ]);
+
+        if($validator->fails()) {
+            return back()->withErrors($validator->errors());
+        } else if($request->contraseña != $request->contraseña2) {
+            $datos = [
+                'contraseña' => 'Las contraseñas no coinciden',
+                'contraseña2' => 'Las contraseñas no coinciden'
+            ];
+            return back()->withErrors($datos);
+        }
+
+        DB::beginTransaction();
+        try {
+            $cliente->correo = $request->correo;
+            $cliente->contraseña = Hash::make($request->contraseña);
+            $cliente->save();
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            // dd($e);
+            return back()->withErrors([
+                'e_mensaje' => 'Ha ocurrido un error inesperado, intenta cambiando lo siguiente',
+                'e_correo' => 'Intenta con otro CORREO, puede que ya exista en nuestros registros'
+            ]);
+        }
+
+        return back()->width(['mensaje' => 'Las credenciales se cambiaron exitosamente']);
     }
 
     public function show() {

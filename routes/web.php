@@ -46,6 +46,11 @@ Route::middleware('auth:cliente')->group(function() {
 
     //Rutas para el PERFIL
     Route::get('/perfilito',[ClientesController::class,'profile']);
+    Route::get('/perfil/editar',[ClientesController::class,'edit']);
+    Route::post('/perfil/editar/datos',[ClientesController::class,'updateData']);
+    Route::post('/perfil/editar/creadenciales',[ClientesController::class,'updateCredentials']);
+    Route::get('/domiclio',[DomicilioController::class,'showDomicilio']); //retonor la vistra domicilio 
+    Route::post('/domicilio/guardar',[DomicilioController::class,'guardar']);//guardar el domicilio del cliente 
 });
 
 //ruta provisional de completar perfiol 

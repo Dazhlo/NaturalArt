@@ -41,12 +41,11 @@
             <hr>
             <div className="col-span-3 row-span-4 col-start-2 row-start-2">
 
-                <form class="aling" action="">
-
+                <form class="aling" action="/domicilio/guardar" method="POST">
                     @csrf
                     <div class="mb-4">
                         <br>
-                        <label for="apellidoP" class="block text-gray-700">Dirrecion <span
+                        <label for="apellidoP" class="block text-gray-700">Dirrecion / Calle<span
                                 class="text-red-500">*</span></label> <input type="text" id="apellidoP" name="dirrecion"
                             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                             required>
