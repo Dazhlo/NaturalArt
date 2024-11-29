@@ -23,7 +23,7 @@
             <div class="p-6 bg-gray-100 text-center rounded-md  ">Datos de cuenta
                 <hr class="border-gray-500">
 
-                <a href="">
+                <a href="/perfil/editar/datos">
                     <h2 class="py-3 mb-6 text-gray-900 ">Actualizar Datos personales</h2>
                 </a>
 

@@ -45,19 +45,23 @@ Route::middleware('auth:cliente')->group(function() {
     Route::post('/carrito/disminuir',[CarritoController::class,'disminuirCarrito']);
 
     //Rutas para el PERFIL
-    Route::get('/perfilito',[ClientesController::class,'profile']);
-    Route::get('/perfil/editar',[ClientesController::class,'edit']);
-    Route::post('/perfil/editar/datos',[ClientesController::class,'updateData']);
-    Route::post('/perfil/editar/creadenciales',[ClientesController::class,'updateCredentials']);
+    Route::get('/perfil',[ClientesController::class,'profile']);
+    Route::get('/perfil/editar/datos',[ClientesController::class,'edit']);
+    Route::put('/perfil/editar/datos',[ClientesController::class,'updateData']);
+
+    Route::get('/perfil/editar/credenciales',[ClientesController::class,'edit2']);
+    Route::put('/perfil/editar/credenciales',[ClientesController::class,'updateCredentials']);
+
     Route::get('/domiclio',[DomicilioController::class,'showDomicilio']); //retonor la vistra domicilio 
     Route::post('/domicilio/guardar',[DomicilioController::class,'guardar']);//guardar el domicilio del cliente 
+  
 });
 
 //ruta provisional de completar perfiol 
 Route::view('/Cliente/completar/perfil','/cliente/completarPerfil');
 
 Route::view('/Menu/Detalles','/cliente/detallesMenu');
-Route::view('/Perfil','/cliente/perfil/miPerfil');
+//Route::view('/Perfil','/cliente/perfil/miPerfil');
 //Route::view('/Perfil/Metodos','/cliente/perfil/metodoPago');
 //Route::view('/Perfil/Domicilio','/cliente/perfil/domicilio');
 
@@ -71,7 +75,7 @@ Route::post('/iniciar',[AuthController::class,'login']);
 //Registrarse
 Route::get('/registrarse',[ClientesController::class,'create']);
 Route::post('/registrarse',[ClientesController::class,'store']);
-Route::get('/auth/google',[ClientesAuthController::class,'updateOrCreate']);
+Route::get('/auth/google',[AuthController::class,'updateOrCreate']);
 
 //Administracion
 Route::view('/AdminInicio','/admin/inicio');

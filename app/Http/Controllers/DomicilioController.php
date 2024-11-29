@@ -40,10 +40,10 @@ class DomicilioController extends Controller
         $Domicilio->cliente_id = $id;
         $Domicilio->estado =  $request->estado;
         $Domicilio->municipio =  $request->municipio;
-        $Domicilio->cp = $request-> codigoPostal;
-        $Domicilio->calle = $request->dirrecion;
-        $Domicilio->no_exterior = $request->no_exterior;
-        $Domicilio->no_interior = $request->no_interior;
+        $Domicilio->cp = $request-> cp;
+        $Domicilio->calle = $request->calle;
+        $Domicilio->no_exterior = $request->numeroExterior;
+        $Domicilio->no_interior = $request->numeroInterior;
         $Domicilio->referencias = $request->referencias;
         $Domicilio->estatus = 'activo' ;
         $Domicilio->save();

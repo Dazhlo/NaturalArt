@@ -46,7 +46,7 @@
                     <div class="mb-4">
                         <br>
                         <label for="apellidoP" class="block text-gray-700">Dirrecion / Calle<span
-                                class="text-red-500">*</span></label> <input type="text" id="apellidoP" name="dirrecion"
+                                class="text-red-500">*</span></label> <input type="text" id="apellidoP" name="calle"
                             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                             required>
                             @error('dirrecion')
@@ -56,7 +56,7 @@
                   
                     <div class="mb-4">
                         <label for="codigoPostal" class="w-100 block text-gray-700">Codigo Postal<span
-                                class="text-red-500">*</span></label> <input type="text" id="codigoPostal" name="codigoPostal"
+                                class="text-red-500">*</span></label> <input type="text" id="codigoPostal" name="cp"
                             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                             required>
                             @error('codigoPostal')
@@ -89,8 +89,17 @@
                     @enderror
                     </div>         
                     <div class="mb-4">
-                        <label for="numeroDomicilio" class="w-100 block text-gray-700">Numero interior/exterior<span
-                                class="text-red-500">*</span></label> <input type="text" id="numeroDomicilio" name="numeroDomicilio"
+                        <label for="numeroDomicilio" class="w-100 block text-gray-700">Numero interior<span
+                                class="text-red-500">*</span></label> <input type="text" id="numeroDomicilio" name="numeroInterior"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+                            >
+                            @error('numeroDomicilio')
+                        <span class="text-red-500">Dato no valido</span>
+                    @enderror
+                    </div>  
+                    <div class="mb-4">
+                        <label for="numeroDomicilio" class="w-100 block text-gray-700">Numero exterior<span
+                                class="text-red-500">*</span></label> <input type="text" id="numeroDomicilio" name="numeroExterior"
                             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                             required>
                             @error('numeroDomicilio')
@@ -100,7 +109,7 @@
                     
                     <div class="mb-4">
                         <label for="entregas" class="w-100 block text-gray-700">Indicaciones para la entrega <span
-                                class="text-red-500">*</span></label> <input type="text" id="entregas" name="entregas"
+                                class="text-red-500">*</span></label> <input type="text" id="entregas" name="referencias"
                             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                             required>
                             @error('entregas')

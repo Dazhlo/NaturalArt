@@ -18,19 +18,22 @@ class MueblesController extends Controller
 
   public function crear(Request $request)
   {
-    try {
+   // try {
       //  dd($request);
       $mueble = new Mueble();
       $mueble->categoria_id = $request->id_catalogo;
       $mueble->nombre = $request->nombre;
       $mueble->precio = $request->precio;
-      $mueble->color = $request->color;
-      $mueble->meterial = $request->meterial;
-      $mueble->descripcion = $request->descripcion;
+      $mueble->descuento = $request->descuento;
+      $mueble->ancho = $request->ancho;
+      $mueble->largo = $request->largo;
+      $mueble->alto = $request->alto;
+      $mueble->estado = 'activo';
+      $mueble->descripcion = $request->descripcion; 
        // Corregido el nombre de la imagen
-      $mueble->stock = $request->stock;
-      
-      $mueble->imagen_url = $request->hasFile('imagen1');
+      $mueble->disponibilidad = $request->disponibilidad;
+      $mueble->imagen = $request->imagen1;
+      $mueble->imagen = $request->hasFile('imagen1');
       if ($request->hasFile('imagen1')) {
         $img = $request->file('imagen1');
         $nuevo = 'mueble_1_' . $mueble->id . '.' . $img->extension();
@@ -44,11 +47,11 @@ class MueblesController extends Controller
       $mueble->save();
       //    Auth::login($admin);
       return redirect('/Agregar/Muebles');
-   } catch (\Exception $e) {
-      return back()->withErrors([
-        'error' => 'Ocurrió un error: ' . $e->getMessage(),
-      ])->withInput();
-    }
+  //  } catch (\Exception $e) {
+  //     return back()->withErrors([
+  //       'error' => 'Ocurrió un error: ' . $e->getMessage(),
+  //     ])->withInput();
+  //   }
   }
   public function editar($id)
   {

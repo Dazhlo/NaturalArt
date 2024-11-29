@@ -25,7 +25,7 @@ class ClientesController extends Controller
     }
     
     // Proceso para almacenar un cliente
-    public function store(Request $request){
+    public function store(Request $request) {
         $validator = Validator::make($request->all(), [
             'nombre' => 'required|string|max:25|min:3',
             'apellido' => 'required|string|max:25|min:3 ',
@@ -89,13 +89,18 @@ class ClientesController extends Controller
     
     public function edit() {
         $id = session()->get('cliente');
-        $cliente = Cliente::find($id);
         $perfil = Perfile::where('cliente_id',$id)->first();
-        return view('/cliente/completarPerfil')->with('cliente',$cliente)->with('perfil',$perfil);
+        return view('/cliente/completarPerfil')->with('perfil',$perfil)->with('mensaje','');
+    }    
+    
+    public function edit2() {
+        $id = session()->get('cliente');
+        $cliente = Cliente::find($id);
+        return view('/cliente/editarCredenciales')->with('cliente',$cliente)->with('mensaje','');
     }    
     
     // Proceso para modificar el perfil
-    public function updateData(Request $request){
+    public function updateData(Request $request) {
         $id = session()->get('cliente');
         $perfil = Perfile::where('cliente_id',$id)->first();
 
@@ -114,8 +119,8 @@ class ClientesController extends Controller
         try {
             $perfil->nombre = $request->nombre;
             $perfil->apellido = $request->apellido;
-            $perfil->telefono =$request->telefono;
-            $perfil->foto =$request->imagen;
+            $perfil->telefono = $request->telefono;
+            $perfil->foto = $request->imagen;
             $perfil->save();
 
             DB::commit();
@@ -128,21 +133,21 @@ class ClientesController extends Controller
             ]);
         }
 
-        if($request->hasfile('imagen')){
+        if($request->hasfile('imagen')) {
 
             $img=$request->imagen;
-            $nuevo='cliente_'.$cliente->id.'.'.$img->extension();
+            $nuevo='cliente_'.$perfil->id.'.'.$img->extension();
             $ruta=$img->storeAs('imagenes/clientes',$nuevo,'public');
             $ruta='storage/'.$ruta;
-            $cliente->imagen=asset($ruta);
-            $cliente->save();
+            $perfil->imagen=asset($ruta);
+            $perfil->save();
         }
 
-        return back()->width(['mensaje' => 'Se actualizaron los datos correctamente']);
+        return view('/cliente/completarPerfil')->with('perfil',$perfil)->with('mensaje','Se actualizaron los datos correctamente');
     }
     
     // Proceso para modificar el perfil
-    public function updateCredentials(Request $request){
+    public function updateCredentials(Request $request) {
         $id = session()->get('cliente');
         $cliente = Cliente::find($id);
 
@@ -178,7 +183,8 @@ class ClientesController extends Controller
             ]);
         }
 
-        return back()->width(['mensaje' => 'Las credenciales se cambiaron exitosamente']);
+        return view('/cliente/editarCredenciales')->with('cliente',$cliente)->with('mensaje','Las credenciales se cambiaron exitosamente');
+        // return back()->width('mensaje','Las credenciales se cambiaron exitosamente');
     }
 
     public function show() {
@@ -200,6 +206,5 @@ class ClientesController extends Controller
         $cliente->save();
 
         return redirect('/');
-
     }
 }

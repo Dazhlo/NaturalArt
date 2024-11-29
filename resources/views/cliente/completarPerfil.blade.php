@@ -7,13 +7,14 @@
             <h2 class="text-2xl font-bold mb-6 text-center">Edita tú Perfil</h2>
             <h3>Modifica los datos que deses cambiar</h3> <br>
 
-            <form accion="/perfil/guardar/datos" method="POST">
+            <form accion="/perfil/editar/datos" method="POST" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div class="mb-4"> 
                     <label for="nombre" class="block text-gray-700">Nombre(s) 
                         <span class="text-red-500">*</span>
                     </label> 
-                    <input type="text" name="nombre" required value="{{$perfil->nombre}}"
+                    <input type="text" name="nombre" value="{{$perfil->nombre}}"
                         class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
                     @error('nombre')
                         <span class="text-red-500"> Nombre no pude estar vacio </span>
@@ -24,7 +25,7 @@
                     <label for="apellido" class="block text-gray-700">Apellidos
                         <span class="text-red-500">*</span>
                     </label> 
-                    <input type="text" name="apellido" required value="{{$perfil->apellido}}"
+                    <input type="text" name="apellido" value="{{$perfil->apellido}}"
                         class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"> 
                     @error('apellido')
                         <span class="text-red-500"> Apellido no pude estar vacio </span>
@@ -42,7 +43,7 @@
                     </label> 
                     <input type="text" name="telefono" value="{{$perfil->telefono}}" placeholder="## #### ####"
                         class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"> 
-                    @error('nombre')
+                    @error('telefono')
                         <span class="text-red-500"> {{$message}} </span>
                     @enderror
                 </div>
@@ -50,7 +51,7 @@
                     <label for="apellidoM" class="block text-gray-700">Fecha de Nacimineto 
                         <span class="text-red-500">*</span>
                     </label> 
-                    <input type="date" id="apellidoM" required
+                    <input type="date" id="apellidoM" 
                         class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"> 
                 </div>
 
@@ -74,60 +75,28 @@
 
             </form>
 
+            @if ($mensaje)
+                <div class="md-4">
+                    <span class="text-green-500 font-bold"> {{$mensaje}} </span>
+                </div>
+            @endif
+
+            @error('e_mensaje')<ul><li><span class="text-red-500">{{$message}}</span></li>@enderror
+            @error('e_correo') <li><span class="text-red-500">{{$message}}</span></li>@enderror
+            @error('e_telefono')<li><span class="text-red-500">{{$message}}</span></li></ul>@enderror
+
             <div class="flex items-center space-x-2" style="margin-top: 10%; margin-bottom: 10%">
                 <div class="flex-1 border-t border-gray-300"></div>
                 <span class="text-gray-500 text-sm">O</span>
                 <div class="flex-1 border-t border-gray-300"></div>
             </div>
 
-            <h3>Edita unicamente tus credenciales de acceso</h3> <br>
-
-            {{-- En este formulario solo cambia correo y contraseña --}}
-            <form accion="/perfil/guardar/creadenciales" method="POST">
-                @csrf
-                <div class="mb-4"> 
-                    <label for="correo" class="block text-gray-700">Correo Electronico
-                        <span class="text-red-500">*</span>
-                    </label> 
-                    <input type="email" name="correo" value="{{$cliente->correo}}" placeholder="ejemplo@correo.com"
-                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
-                    @error('correo')
-                        <span class="text-red-500"> Ingrese un correo valido </span>
-                    @enderror
-                </div>
-
-                <div class="mb-4"> 
-                    <label for="contraseña" class="block text-gray-700">Contraseña
-                        <span class="text-red-500">*</span>
-                    </label> 
-                    <input type="text" name="contraseña" placeholder="********"
-                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"> 
-                    @error('contraseña')
-                        <span class="text-red-500"> {{$message}} </span>
-                    @enderror
-                </div>
-
-                <div class="mb-4"> 
-                    <label for="contraseña2" class="block text-gray-700">Confirma Contraseña
-                        <span class="text-red-500">*</span>
-                    </label> 
-                    <input type="text" name="contraseña2" placeholder="********"
-                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"> 
-                    @error('contraseña2')
-                        <span class="text-red-500"> {{$message}} </span>
-                    @enderror
-                </div>
-
-                <button type="submit" class="w-full bg-red-500 text-white py-2 rounded-md hover:bg-red-600">
-                    Cambiar Credenciales
+            <a href="/perfil/editar/credenciales">
+                <button class="w-full bg-red-500 text-white py-2 rounded-md hover:bg-red-600">
+                    Cambia Tus Credenciales De Acceso
                 </button>
-
-                <div class="md-4">
-                    <span> Al hacer click acepatas nuestros</span>
-                    <a href="#"> <span class="text-red-500"> Terminos, condiciones y avisos de privacidad.</span> </a>
-                </div>
-
-            </form>
+            </a>
+            
         </div>
     </div>
 @endsection

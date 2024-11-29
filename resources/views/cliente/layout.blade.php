@@ -23,6 +23,7 @@
 
                     <div class="flex items-center space-x-4">
                          <a href="/menu" class="text-gray-600">Mis Compras</a> 
+                         <a href="/perfil" class="text-gray-600">Mi Perfil</a>
                          <a href="/iniciar" class="text-gray-600">Iniciar Sesión</a>
                         {{-- <a href="{{ url('/login') }}" class="text-gray-600"><i class="fas fa-lock"></i></a> --}}
                         <form action="/abandonar" method="POST" >
@@ -42,7 +43,7 @@
                         class="w-full p-2 border border-gray-300 rounded"> </div>
 
 
-                <div class="mt-4 flex justify-between items-center"> <a href="#" class="text-gray-600">Todo
+                <div class="mt-4 flex justify-between items-center"> <a href="/catalogo" class="text-gray-600">Todo
                     </a> <a href="#" class="text-gray-600">Muebles</a> <a href="#"
                         class="text-gray-600">Escritorios</a> <a href="#" class="text-gray-600">Colecciones</a> <a
                         href="#" class="text-gray-600">Roperos</a> <a href="#"
