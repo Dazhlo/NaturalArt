@@ -35,34 +35,37 @@
 
         @yield('content')
         <div class="col-span-2 row-span-4">
-            <h2 class="py-5 text-3xl font-bold mb-6 ">Datos Personales</h2>
+            <h2 class="py-5 text-3xl font-bold">¿Seguro que quieres eliminar tu cuenta?</h2>
+            <h2 class="py-5 text-2xl font-bold">Peerderás los siguientes datos:</h2>
             <div class="col-span-2 row-span-2 col-start-2 row-start-2">
                 <h2 class="text-xl mb-2">Nombre </h2>
-                <h2 class=" mb-6 ">{{$perfil->nombre}}</h2>
+                <h2 class=" mb-6" style="color: red; font-style: italic; font-size: 120%">{{$perfil->nombre}}</h2>
             </div>
             <div class="col-span-2 row-span-2 col-start-2 row-start-2">
                 <h2 class="text-xl mb-2">Apellidos </h2>
-                <h2 class=" mb-6 ">{{$perfil->apellido}}</h2>
+                <h2 class=" mb-6" style="color: red; font-style: italic; font-size: 120%">{{$perfil->apellido}}</h2>
             </div>
             <div class="col-span-2 row-span-2 col-start-2 row-start-2">
                 <h2 class="text-xl mb-2">Correo electronico </h2>
-                <h2 class=" mb-6 ">{{$cliente->correo}}</h2>
+                <h2 class=" mb-6" style="color: red; font-style: italic; font-size: 120%">{{$cliente->correo}}</h2>
             </div>
             <div class="col-span-2 row-span-2 col-start-2 row-start-2">
                 <h2 class="text-xl mb-2">Numero telefonico </h2>
-                <h2 class=" mb-6 text-red">{{$perfil->telefono}}</h2>
+                <h2 class=" mb-6" style="color: red; font-style: italic; font-size: 120%">{{$perfil->telefono}}</h2>
             </div>
             <div class="col-span-2 row-span-2 col-start-2 row-start-2">
-                <a href="/perfil/eliminar">
+                <form action="" method="POST">
+                    @csrf
+                    @method('DELETE')
                     <button class="w-full bg-red-500 text-white py-2 rounded-md hover:bg-red-600">
-                        Eliminar Cuenta
+                        Sí. Quiero eliminar mi cuenta
                     </button>
-                </a>
+                </form>
             </div>
         </div>
         
         <div class="row-span-4 col-start-4 col-span-2">
-            <h2 class="py-9 text-2xl font-bold mb-6 "></h2>
+            <h2 class="py-12 text-2xl font-bold mb-6 "></h2>
             <div class="col-span-2 row-span-2 col-start-2 row-start-2">
                 <h2 class="text-xl mb-2">Foto de perfil </h2>
                 <img src="{{$perfil->foto}}" alt="{{$perfil->foto}}" width="80%">

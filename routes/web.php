@@ -51,10 +51,12 @@ Route::middleware('auth:cliente')->group(function() {
 
     Route::get('/perfil/editar/credenciales',[ClientesController::class,'edit2']);
     Route::put('/perfil/editar/credenciales',[ClientesController::class,'updateCredentials']);
+    
+    Route::get('/perfil/eliminar',[ClientesController::class,'show']);
+    Route::delete('/perfil/eliminar',[ClientesController::class,'destroy']);
 
     Route::get('/domiclio',[DomicilioController::class,'showDomicilio']); //retonor la vistra domicilio 
     Route::post('/domicilio/guardar',[DomicilioController::class,'guardar']);//guardar el domicilio del cliente 
-  
 });
 
 //ruta provisional de completar perfiol 

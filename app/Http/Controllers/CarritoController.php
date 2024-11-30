@@ -11,7 +11,7 @@ class CarritoController extends Controller
         $id = session()->get('cliente');    //esta session se debe crear en el archivo de autentificación
         $carrito = \Cart::session($id)->getContent();
         //dd($carrito);
-        return view('/muebles/carrito')->with('muebles',$muebles);  //Debera retornar la ruta de la página carrito
+        return view('/muebles/carrito')->with('muebles',$carrito);  //Debera retornar la ruta de la página carrito
     }
 
     public function agregarCarrito(Request $request) {
@@ -36,7 +36,7 @@ class CarritoController extends Controller
                 'descripcion' => $request->descripcion,
                 'precioUnitario' => $request->precio,
                 'descuento' => $request->descuento,
-                'dispobinibilidad' => $request->disponibilidad,
+                'disponibilidad' => $request->disponibilidad,
                 'ancho' => $request->ancho,
                 'largo' => $request->largo,
                 'alto' => $request->alto

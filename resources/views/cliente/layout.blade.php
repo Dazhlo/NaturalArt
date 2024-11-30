@@ -22,17 +22,23 @@
                     </div>
 
                     <div class="flex items-center space-x-4">
-                         <a href="/menu" class="text-gray-600">Mis Compras</a> 
-                         <a href="/perfil" class="text-gray-600">Mi Perfil</a>
-                         <a href="/iniciar" class="text-gray-600">Iniciar Sesión</a>
-                        {{-- <a href="{{ url('/login') }}" class="text-gray-600"><i class="fas fa-lock"></i></a> --}}
-                        <form action="/abandonar" method="POST" >
-                            @csrf
-                            <button type="submit" class="text-gray-600">
-                                Cerrar Sesión
-                            </button>
-                            {{-- <a href="#" class="text-gray-600">Cerrar sesión</a> --}}
-                        </form>
+                        <a href="/menu" class="text-gray-600">Mis Compras</a> 
+
+                        {{-- Con lo siguiente se valida que lo que se muestra al usuario segun si inicio sesion o no --}}
+                        @if (session()->get('cliente'))
+                            <a href="/perfil" class="text-gray-600">Mi Perfil</a>
+                            <a href="/carrito" class="text-gray-600">Carrito</a>
+                           
+                            {{-- <a href="{{ url('/login') }}" class="text-gray-600"><i class="fas fa-lock"></i></a> --}}
+                            <form action="/abandonar" method="POST" >
+                                @csrf
+                                <button type="submit" class="text-gray-600">
+                                    Cerrar Sesión
+                                </button>
+                            </form>
+                        @else
+                            <a href="/iniciar" class="text-gray-600">Iniciar Sesión</a>
+                        @endif
                     </div>
                 </div>
 

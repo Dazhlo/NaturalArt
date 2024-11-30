@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use App\Models\Cliente;
 use App\Models\Perfile;
+use App\Models\Direccione;
 
 class ClientesController extends Controller
 {
@@ -74,16 +75,6 @@ class ClientesController extends Controller
             ]);
         }
 
-        // if($request->hasfile('imagen')){
-
-        //     $img=$request->imagen;
-        //     $nuevo='cliente_'.$cliente->id.'.'.$img->extension();
-        //     $ruta=$img->storeAs('imagenes/clientes',$nuevo,'public');
-        //     $ruta='storage/'.$ruta;
-        //     $cliente->imagen=asset($ruta);
-        //     $cliente->save();
-        // }
-
         return redirect('/iniciar');
     }
     
@@ -119,14 +110,14 @@ class ClientesController extends Controller
         try {
             $perfil->nombre = $request->nombre;
             $perfil->apellido = $request->apellido;
-            $perfil->telefono = $request->telefono;
             $perfil->foto = $request->imagen;
+            $perfil->telefono = $request->telefono;
             $perfil->save();
 
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
-            // dd($e);
+            dd($e);
             return back()->withErrors([
                 'e_mensaje' => 'Ha ocurrido un error inesperado, intenta cambiando lo siguiente',
                 'e_telefono' => 'Intenta con otro TELEFONO, puede que ya exista en nuestros registros'
@@ -139,7 +130,7 @@ class ClientesController extends Controller
             $nuevo='cliente_'.$perfil->id.'.'.$img->extension();
             $ruta=$img->storeAs('imagenes/clientes',$nuevo,'public');
             $ruta='storage/'.$ruta;
-            $perfil->imagen=asset($ruta);
+            $perfil->foto = asset($ruta);
             $perfil->save();
         }
 
@@ -184,21 +175,34 @@ class ClientesController extends Controller
         }
 
         return view('/cliente/editarCredenciales')->with('cliente',$cliente)->with('mensaje','Las credenciales se cambiaron exitosamente');
-        // return back()->width('mensaje','Las credenciales se cambiaron exitosamente');
     }
 
     public function show() {
         $id = session()->get('cliente');
-        $cliente=cliente::find($id);
-        return view('/clientes/mostrar')->with('cliente',$cliente);
+        $cliente = Cliente::find($id);
+        $perfil = Perfile::where('cliente_id',$id)->first();
+        return view('/cliente/perfil/eliminarPerfil')->with('cliente',$cliente)->with('perfil',$perfil);
     }
 
     
     public function destroy() {
         $id = session()->get('cliente');
-        $cliente = Cliente::find($id);
+        
+        $perfil = Perfile::where('cliente_id',$id)->first();
+        $perfil->estado = 'inactivo';
+        $perfil->save();
+        
+        try{
+            $direccion = Direccione::where('cliente_id',$id)->firstOrFail();
+            $direccion->estatus = 'inactivo';
+            $direccion->save();
+        } catch(\Exception $e) {
+            // dd($e);
+            // Aqui no pasa nada, el usuario no tiene una dirección
+        }
 
-        $cliente->estado = 'inactivo'; //puede quitar esto de la edicion
+        $cliente = Cliente::find($id);
+        $cliente->estado = 'inactivo';
 
         session()->flush();
         session()->invalidate();

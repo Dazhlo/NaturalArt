@@ -168,6 +168,7 @@ return [
          * Package Service Providers...
          */
 
+         Darryldecode\Cart\CartServiceProvider::class, // Paqueteria de carrito
         /*
          * Application Service Providers...
          */
@@ -192,6 +193,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // ...
+        'Cart' => Darryldecode\Cart\Facades\CartFacade::class   // Paqueteria de carrito
     ])->toArray(),
 
 ];
