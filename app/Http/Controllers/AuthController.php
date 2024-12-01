@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\Cliente;
+use App\Models\Perfile;
 use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Support\Str;
@@ -57,7 +58,8 @@ class AuthController extends Controller
             'token_id' => $googleUser->token, 
         ]);
         
-        $perfil = Perfile::updateOrCreate(['id' => $cliente->id], [
+        $perfil = Perfile::updateOrCreate(['cliente_id' => $cliente->id], [
+            // 'cliente_id' => $cliente->id,
             'nombre' => $googleUser->user['given_name'],
             'apellido' => $googleUser->user['family_name'],
             'foto' => $googleUser->avatar,

@@ -10,8 +10,10 @@ class Perfile extends Model
     use HasFactory;
 
     protected $fillable = [
+        'cliente_id',
         'nombre',
         'apellido',
+        'foto',
         'telefono'
     ];
 }

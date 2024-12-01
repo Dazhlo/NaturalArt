@@ -18,14 +18,12 @@
                 <div class="flex justify-between items-center">
                     <div class="text-center">
                         <h1 class="text-2xl font-bold">Natural Art</h1>
-                        
                     </div>
 
                     <div class="flex items-center space-x-4">
-                        <a href="/menu" class="text-gray-600">Mis Compras</a> 
-
                         {{-- Con lo siguiente se valida que lo que se muestra al usuario segun si inicio sesion o no --}}
                         @if (session()->get('cliente'))
+                            <a href="/pedidos" class="text-gray-600">Mis Compras</a> 
                             <a href="/perfil" class="text-gray-600">Mi Perfil</a>
                             <a href="/carrito" class="text-gray-600">Carrito</a>
                            
@@ -38,25 +36,26 @@
                             </form>
                         @else
                             <a href="/iniciar" class="text-gray-600">Iniciar Sesión</a>
+                            <a href="/registrarse" class="text-gray-600">Crear Cuenta</a>
                         @endif
                     </div>
                 </div>
 
+                <div class="mt-4"> 
+                    <input type="text" placeholder="Buscar por producto..." class="w-full p-2 border border-gray-300 rounded"> 
+                </div>
 
-
-
-                <div class="mt-4"> <input type="text" placeholder="Buscar por producto..."
-                        class="w-full p-2 border border-gray-300 rounded"> </div>
-
-
-                <div class="mt-4 flex justify-between items-center"> <a href="/catalogo" class="text-gray-600">Todo
-                    </a> <a href="#" class="text-gray-600">Muebles</a> <a href="#"
-                        class="text-gray-600">Escritorios</a> <a href="#" class="text-gray-600">Colecciones</a> <a
-                        href="#" class="text-gray-600">Roperos</a> <a href="#"
-                        class="text-gray-600">Decoración</a> <a href="#" class="text-gray-600">Decoración de
-                        interior</a> </div>
+                <div class="mt-4 flex justify-between items-center" style="margin-left: 8%; margin-right: 8%;"> 
+                    <a href="/catalogo" class="text-gray-600">Todo</a> 
+                    <a href="/salas/sofas" class="text-gray-600">Salas y Sofás</a> 
+                    <a href="/escritorios" class="text-gray-600">Escritorios</a> 
+                    <a href="/comedores" class="text-gray-600">Comedores</a> 
+                    <a href="/recamaras" class="text-gray-600">Recamaras</a> 
+                    {{-- <a href="#" class="text-gray-600">Decoración</a> 
+                    <a href="#" class="text-gray-600">Decoración de interior</a>  --}}
+                </div>
+                
                 <div class="mt-4 bg-white p-4 shadow">
-
     </nav>
 
 
@@ -69,7 +68,7 @@
             <div>
                 <h3 class="font-bold mb-2">Ayuda</h3>
                 <ul>
-                    <li><a href="" class="hover:underline">Preguntas Frecuentes</a></li>
+                    <li><a href="#" class="hover:underline">Preguntas Frecuentes</a></li>
                     <li><a href="#" class="hover:underline">Información de Envío</a></li>
                     <li><a href="#" class="hover:underline">Devoluciones</a></li>
                 </ul>
@@ -85,7 +84,7 @@
             <div>
                 <h3 class="font-bold mb-2">Atención al Cliente</h3>
                 <ul>
-                    <li><a href="t#" class="hover:underline">332345667</a></li>
+                    <li><a href="#" class="hover:underline">332345667</a></li>
                     <li><a href="#" class="hover:underline">postventa@naturalArt.com.mx</a></li>
 
                 </ul>

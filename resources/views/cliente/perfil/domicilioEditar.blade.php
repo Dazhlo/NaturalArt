@@ -27,19 +27,18 @@
             </div>
         </div>
 
-        {{-- si el usuario no tiene direcciones --}}
-        @if ($errors->count() > 0)
         <div className="grid grid-cols-5 grid-rows-5 gap-4">
             <hr>
-            <h1 style="font-size: 200%"><b><i>No tienes direcciones guardadas, por favor agrega una</i></b></h1> <br>
+            <h1 style="font-size: 200%"><b><i>Modifica tu Dirección</i></b></h1> <br>
             <div className="col-span-3 row-span-4 col-start-2 row-start-2">
 
-                <form class="aling" action="/domicilio/guardar" method="POST">
+                <form class="aling" action="/domicilio/actualizar" method="POST">
                     @csrf
-                    
+                    @method('PUT')
+
                     <div class="mb-4">
                         <label for="estado" class="w-100 block text-gray-700">Estado<span class="text-red-500">*</span></label> 
-                        <input type="text" id="estado" name="estado" required
+                        <input type="text" id="estado" name="estado" required value="{{$cliente->estado}}"
                             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
                         @error('estado')
                             <span class="text-red-500">Dato no valido</span>
@@ -48,7 +47,7 @@
                 
                     <div class="mb-4">
                         <label for="municipio" class="w-100 block text-gray-700">Municipio<span class="text-red-500">*</span></label> 
-                        <input type="text" id="municipio" name="municipio" required
+                        <input type="text" id="municipio" name="municipio" required value="{{$cliente->municipio}}"
                             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
                         @error('municipio')
                             <span class="text-red-500">Dato no valido</span>
@@ -57,7 +56,7 @@
 
                     <div class="mb-4">
                         <label for="cp" class="w-100 block text-gray-700">Codigo Postal<span class="text-red-500">*</span></label> 
-                        <input type="text" id="cp" name="cp" required
+                        <input type="text" id="cp" name="cp" required value="{{$cliente->cp}}"
                             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
                         @error('codigoPostal')
                             <span class="text-red-500">Codigo Postal no valido</span>
@@ -67,7 +66,7 @@
 
                     <div class="mb-4">
                         <label for="colonia" class="w-100 block text-gray-700">Colonia<span class="text-red-500">*</span></label>
-                        <input type="text" id="colonia" name="colonia" required
+                        <input type="text" id="colonia" name="colonia" required value="{{$cliente->colonia}}"
                             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
                         @error('colonia')
                             <span class="text-red-500">Dato no valido</span>
@@ -76,7 +75,7 @@
 
                     <div class="mb-4"> <br>
                         <label for="calle" class="block text-gray-700">Calle<span class="text-red-500">*</span></label> 
-                        <input type="text" id="calle" name="calle" required
+                        <input type="text" id="calle" name="calle" required value="{{$cliente->calle}}"
                             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
                         @error('dirrecion')
                             <span class="text-red-500">Calle no valida</span>
@@ -85,7 +84,7 @@
 
                     <div class="mb-4">
                         <label for="noExt" class="w-100 block text-gray-700">Numero exterior<span class="text-red-500">*</span></label> 
-                        <input type="text" id="noExt" name="noExt" required
+                        <input type="text" id="noExt" name="noExt" required value="{{$cliente->no_exterior}}"
                             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
                         @error('noExt')
                             <span class="text-red-500">Dato no valido</span>
@@ -95,7 +94,7 @@
                     
                     <div class="mb-4">
                         <label for="noInt" class="w-100 block text-gray-700">Numero interior</label> 
-                        <input type="text" id="noInt" name="noInt"
+                        <input type="text" id="noInt" name="noInt" value="{{$cliente->no_interior}}"
                             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
                         @error('noInt')
                             <span class="text-red-500">Dato no valido</span>
@@ -108,7 +107,7 @@
                         {{-- <input type="text" id="referencias" name="referencias"
                             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"> --}}
                         <textarea name="referencias" id="referencias" cols="30" rows="3"
-                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"></textarea>
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">{{$cliente->referencias}}</textarea>
                         @error('referencias')
                             <span class="text-red-500">Dato no valido</span>
                         @enderror
@@ -121,67 +120,6 @@
                 </form>
             </div>
         </div>
-
-        @else
-
-        <div className="grid grid-cols-5 grid-rows-5 gap-4">
-            <hr>
-            <h1 style="font-size: 200%"><b><i>Dirección</i></b></h1> <br>
-            <div className="col-span-3 row-span-4 col-start-2 row-start-2">
-
-                <div class="mb-4">
-                    <label for="estado" class="w-100 block text-gray-700">Estado</label> 
-                    <input type="text" id="estado" name="estado" disabled value="{{$cliente->estado}}"
-                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
-                </div>
-            
-                <div class="mb-4">
-                    <label for="municipio" class="w-100 block text-gray-700">Municipio</label> 
-                    <input type="text" id="municipio" name="municipio" disabled value="{{$cliente->municipio}}"
-                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
-                </div>
-
-                <div class="mb-4">
-                    <label for="cp" class="w-100 block text-gray-700">Codigo Postal</label> 
-                    <input type="text" id="cp" name="cp" disabled value="{{$cliente->cp}}"
-                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
-                </div>
-
-                <div class="mb-4">
-                    <label for="colonia" class="w-100 block text-gray-700">Colonia</label>
-                    <input type="text" id="colonia" name="colonia" disabled value="{{$cliente->colonia}}"
-                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
-                </div>
-
-                <div class="mb-4"> <br>
-                    <label for="calle" class="block text-gray-700">Calle</label> 
-                    <input type="text" id="calle" name="calle" disabled value="{{$cliente->calle}}"
-                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
-                </div>
-
-                <div class="mb-4">
-                    <label for="noExt" class="w-100 block text-gray-700">Numero exterior</label> 
-                    <input type="text" id="noExt" name="noExt" disabled value="{{$cliente->no_exterior}}"
-                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
-                </div>
-                
-                <div class="mb-4">
-                    <label for="noInt" class="w-100 block text-gray-700">Numero interior</label> 
-                    <input type="text" id="noInt" name="noInt" disabled value="{{$cliente->no_interior}}"
-                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
-                </div>
-
-                <div class="mb-4">
-                    <label for="referencias" class="w-100 block text-gray-700">Referencias</label> 
-                    {{-- <input type="text" id="referencias" name="referencias" disabled
-                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"> --}}
-                    <textarea name="referencias" id="referencias" cols="30" rows="3" disabled
-                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">{{$cliente->referencias}}</textarea>
-                </div>
-
-            </div>
-        </div>
-        @endif
 
     </div>
 

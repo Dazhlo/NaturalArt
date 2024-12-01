@@ -7,27 +7,21 @@
             <div>
                 <h1 class="text-2xl font-bold mb-6"> Mi Cuenta </h1>
             </div>
-            <a href="">
+            <a href="/pedidos">
                 <div class="p-6 bg-gray-100 text-center rounded-md  "> Mis compras </div>
-            </a>
-            <br>
+            </a> <br>
 
-            <!-- <a href="/Perfil/Metodos">
-                    <div class="p-6 bg-gray-100 text-center rounded-md  ">Metodo de pago</div>
-                </a>
-                <br> -->
-            <a href="/Perfil/Domicilio">
+            <a href="/domicilio">
                 <div class="p-6 bg-gray-100 text-center rounded-md  ">Mi domicilio </div>
             </a> <br>
 
             <div class="p-6 bg-gray-100 text-center rounded-md  ">Datos de cuenta
                 <hr class="border-gray-500">
-
                 <a href="/perfil/editar/datos">
                     <h2 class="py-3 mb-6 text-gray-900 ">Actualizar Datos personales</h2>
                 </a>
 
-                <a href="">
+                <a href="/domicilio/editar">
                     <h2 class="py-3 mb-6 text-gray-900">Actualizar Domicilio</h2>
                 </a>
             </div>

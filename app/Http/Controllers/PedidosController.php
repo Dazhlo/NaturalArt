@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Mueble;
 use App\Models\Pedido;
-// use App\Models\Detalles_Pedido;
 use App\Models\DetallesPedido;
 use App\Http\Controllers\PayPalController;
 
@@ -75,5 +74,15 @@ class PedidosController extends Controller
 
     public function cancelado() {
         return view('/muebles/errorPago');
+    }
+
+    public function verPedidos() {
+        $id = session()->get('cliente');
+        $detalles = DetallesPedido::where('cliente_id',$id)->get();
+        $mueblesID = DetallesPedido::where('cliente_id',$id)->get('mueble_id');
+        $pedidosID = DetallesPedido::where('cliente_id',$id)->get('pedido_id');
+        $muebles = Mueble::whereIn('id',$mueblesID)->get();
+        $pedidos = Pedido::whereIn('id',$pedidosID)->get();
+        return view('/cliente/perfil/misPedidos')->with('detalles',$detalles)->with('muebles',$muebles)->with('pedidos',$pedidos);
     }
 }

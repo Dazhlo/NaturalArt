@@ -110,7 +110,6 @@ class ClientesController extends Controller
         try {
             $perfil->nombre = $request->nombre;
             $perfil->apellido = $request->apellido;
-            $perfil->foto = $request->imagen;
             $perfil->telefono = $request->telefono;
             $perfil->save();
 

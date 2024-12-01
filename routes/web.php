@@ -28,7 +28,7 @@ Route::get('/', function () {
 
 //  Despues de la autentificación
 Route::middleware('auth:cliente')->group(function() {
-    // Aqui van todas las rutas que se deben proteger
+        // Aqui van todas las rutas que se deben proteger
     //Ruta para CERRAR SESION
     Route::post('/abandonar',[AuthController::class,'logout']);
 
@@ -55,18 +55,15 @@ Route::middleware('auth:cliente')->group(function() {
     Route::get('/perfil/eliminar',[ClientesController::class,'show']);
     Route::delete('/perfil/eliminar',[ClientesController::class,'destroy']);
 
-    Route::get('/domiclio',[DomicilioController::class,'showDomicilio']); //retonor la vistra domicilio 
+    Route::get('/domicilio',[DomicilioController::class,'showDomicilio']); //retonor la vistra domicilio 
     Route::post('/domicilio/guardar',[DomicilioController::class,'guardar']);//guardar el domicilio del cliente 
+    
+    Route::get('/domicilio/editar',[DomicilioController::class,'editDomicilio']); 
+    Route::put('/domicilio/actualizar',[DomicilioController::class,'actualizar']);
+
+    //Rutas para PEDIDOS
+    Route::get('/pedidos',[PedidosController::class,'verPedidos']);
 });
-
-//ruta provisional de completar perfiol 
-Route::view('/Cliente/completar/perfil','/cliente/completarPerfil');
-
-Route::view('/Menu/Detalles','/cliente/detallesMenu');
-//Route::view('/Perfil','/cliente/perfil/miPerfil');
-//Route::view('/Perfil/Metodos','/cliente/perfil/metodoPago');
-//Route::view('/Perfil/Domicilio','/cliente/perfil/domicilio');
-
 
 //login y registro 
 Route::view('/login','/login/login');
@@ -77,20 +74,30 @@ Route::post('/iniciar',[AuthController::class,'login']);
 //Registrarse
 Route::get('/registrarse',[ClientesController::class,'create']);
 Route::post('/registrarse',[ClientesController::class,'store']);
-Route::get('/auth/google',[AuthController::class,'updateOrCreate']);
 
-//Administracion
-Route::view('/AdminInicio','/admin/inicio');
-Route::view('/AdminInicio1','/admin/home');
-Route::view('/AdminMuebles','/admin/muebles');
-Route::view('/Pedidos','/admin/Pedidos');
-//vista de domicilio 
-Route::get('/Perfil/Domicilio',[DomicilioController::class,'showDomicilio']);
-//Ruta para mostrar la vista, funciuon solo retorna la vista 
-Route::get('/Agregar/Muebles',[CategoriasContoller::class,'show']);
-//ruta para guardar muebles 
-Route::post('/Crear/Muebles',[MueblesController::class,'crear']);
+// Route::get('/auth/google',[AuthController::class,'updateOrCreate']);
+Route::get('/auth/google', function(){
+    return Socialite::driver('google')->stateless()->redirect();
+});
+Route::get('/auth/google/callback',[AuthController::class,'updateOrCreate']);
+
+    //Administracion
+    Route::view('/AdminInicio','/admin/inicio');
+    Route::view('/AdminInicio1','/admin/home');
+    Route::view('/AdminMuebles','/admin/muebles');
+    Route::view('/Pedidos','/admin/Pedidos');
+    //vista de domicilio 
+    Route::get('/Perfil/Domicilio',[DomicilioController::class,'showDomicilio']);
+    //Ruta para mostrar la vista, funciuon solo retorna la vista 
+    Route::get('/Agregar/Muebles',[CategoriasContoller::class,'show']);
+    //ruta para guardar muebles 
+    Route::post('/Crear/Muebles',[MueblesController::class,'crear']);
 
 //Rutas para el MENÚ
 Route::get('/catalogo',[menuController::class,'showMenu']);
 Route::get('/mueble/{id}/detalles',[menuController::class,'showMueble']);
+
+Route::get('/salas/sofas',[menuController::class,'showSalasSofas']);
+Route::get('/escritorios',[menuController::class,'showEscritorios']);
+Route::get('/comedores',[menuController::class,'showComedores']);
+Route::get('/recamaras',[menuController::class,'showRecamaras']);
