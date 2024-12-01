@@ -4,15 +4,15 @@
 
     <div class="grid grid-cols-5 grid-rows-5 gap-4">
         <div class="px-20 py-5 row-span-4">
-            <img src="" alt="" class="w-full h-48 object-cover mb-4 rounded">
-            <img src="" alt="" class="w-full h-48 object-cover mb-4 rounded">
-            <img src="" alt="" class="w-full h-48 object-cover mb-4 rounded">
+            <img src="{{$mueble->imagen}}" alt="{{$mueble->imagen}}" class="w-full h-auto object-cover mb-4 rounded">
+            <img src="{{$mueble->imagen2}}" alt="{{$mueble->imagen2}}" class="w-full h-auto object-cover mb-4 rounded">
+            <img src="{{$mueble->imagen3}}" alt="{{$mueble->imagen3}}" class="w-full h-auto object-cover mb-4 rounded">
         </div>
         
         <div class="col-span-2 row-span-4">
             <div class="col-span-2 row-span-2 col-start-2 row-start-2">
 
-                <img src="{{$mueble->imagen}}" alt="{{$mueble->imagen}}" class="w-full h-48 object-cover mb-4 rounded">
+                <img src="{{$mueble->imagen}}" alt="{{$mueble->imagen}}" class="w-full h-auto object-cover mb-4 rounded">
 
                 {{-- name del articulo raza --}}
                 <h3 class="text-xl font-bold mb-2">{{$mueble->nombre}}</h3>

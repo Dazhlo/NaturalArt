@@ -10,6 +10,11 @@
             @endforeach
         </div>
     @endif
+    {{-- @if ($mensaje)
+        <div class="mb-4 text-red-600" style="margin-bottom: 120px">
+            {{$mensaje}}
+        </div>
+    @endif --}}
 
     <div class="py-0 grid grid-cols-5 grid-rows-5 gap-4 bg-white p-4 rounded-lg shadow-md mx-auto">
         @if (\Cart::session(session()->get('cliente'))->getContent()->count() == 0)
@@ -25,12 +30,12 @@
             <div class="col-span-2 row-span-2 col-start-2" style="margin-bottom: 50px">
 
                 {{-- Carga Imagen --}}
-                <img src="{{ $item->attributes->image }}" alt="{{ $item->attributes->image }}" class="w-full h-48 object-cover mb-4 rounded">
-                <div class="flex">
+                <img src="{{ $item->attributes->imagen }}" alt="{{ $item->attributes->imagen }}" class="h-auto object-cover mb-4 rounded" width="60%">
+                {{-- <div class="flex">
                     <img src="" alt="" class="w-1/4 h-2/4 object-cover mb-4 rounded">
                     <img src="" alt="" class="w-1/4 h-2/4 object-cover mb-4 rounded">
                     <img src="" alt="" class="w-1/4 h-2/4 object-cover mb-4 rounded">
-                </div>
+                </div> --}}
 
                 {{-- Carga Nombre --}}
                 <h3 class="text-xl font-bold mb-2">{{ $item->name }}</h3>

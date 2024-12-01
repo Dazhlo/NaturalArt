@@ -18,9 +18,10 @@ class PayPalController extends Controller
         ]);
     }
 
-    public function pagarPaypal() {
+    public function pagarPaypal($id) {
         try {
-            $id = session()->get('cliete');
+            // dd($id);
+            // $id = session()->get('cliete');
             $carrito = \Cart::session($id)->getContent();
             //dd(\Cart::getTotal());
             $response = $this->gateway->purchase([

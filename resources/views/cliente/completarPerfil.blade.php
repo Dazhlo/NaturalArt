@@ -34,7 +34,7 @@
                 <div class="mb-4"> 
                     <label for="imagen" class="block text-gray-700">Foto
                     </label> 
-                    <img src="{{$perfil->imagen}}" alt="{{$perfil->imagen}}" class="w-full h-48 object-cover mb-4 rounded">
+                    <img src="{{$perfil->foto}}" alt="{{$perfil->foto}}" class="w-full h-48 object-cover mb-4 rounded">
                     <input type="file" name="imagen" accept="image/*" value=""
                         class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"> 
                 </div>
